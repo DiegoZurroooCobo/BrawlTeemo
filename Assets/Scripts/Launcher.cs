@@ -19,6 +19,7 @@ public class Launcher : MonoBehaviourPunCallbacks
     // el numero de version de este cliente. Los usuarios son separados por la gameVersion
 
     string gameVersion = "1.0";
+    bool isConnecting;
 
     #endregion
 
@@ -58,7 +59,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         else
         {
             // primero debemos conectar con el Photon Online Server 
-            PhotonNetwork.ConnectUsingSettings();
+            isConnecting = PhotonNetwork.ConnectUsingSettings();
             PhotonNetwork.GameVersion = gameVersion;    
         }
     }
@@ -69,14 +70,18 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster()
     {
-        // lo primero que intentamos hcaer es conectarnos a una room ya creada. Si hay una, guay chachi. Si no, nos llamara de vuelta a OnJoinRandomFailed()
-       PhotonNetwork.JoinRandomRoom();
-       Debug.Log("OnconnectedToMaster fue llamado por el PUN");
+        if (isConnecting)
+        {
+            // lo primero que intentamos hcaer es conectarnos a una room ya creada. Si hay una, guay chachi. Si no, nos llamara de vuelta a OnJoinRandomFailed()
+            PhotonNetwork.JoinRandomRoom();
+            Debug.Log("OnconnectedToMaster fue llamado por el PUN");
+        }
     }
 
     public override void OnDisconnected(DisconnectCause cause)
     {
         Debug.LogWarningFormat("La conexion fallo :O por la razon ", cause);
+        isConnecting = false;
     }
 
     public override void OnJoinRandomFailed(short returnCode, string message)
@@ -89,6 +94,12 @@ public class Launcher : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         Debug.Log("OnJoinedRoom() fue llamado por PUN. Ahora este cliente esta en una room :p");
+        //Solo cargamos esto si somos el primer jugador, los demas dependeran de PhotonNetwork.AutomaticallySyncScene para sincronizarse a nuestra escena
+        if(PhotonNetwork.CurrentRoom.PlayerCount == 1) 
+        {
+            Debug.Log("Cargamos una room para 1 :D ");
+            PhotonNetwork.LoadLevel("Room for 1"); // Carga la room
+        }
     }
 
     #endregion
