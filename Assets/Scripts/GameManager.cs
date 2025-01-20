@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
+    
     public GameObject playerPrefab;
 
     public override void OnLeftRoom()
@@ -23,6 +25,10 @@ public class GameManager : MonoBehaviourPunCallbacks
             Debug.LogFormat("OnPlayerEnteredRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient); // se llama antes que OnPlayerLeftRoom 
             LoadArena();
         }
+    }
+    public void SelectCharacter(int value)
+    {
+        
     }
 
     public override void OnPlayerLeftRoom(Player other)
