@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
+    public GameObject playerPrefab;
 
     public override void OnLeftRoom()
     {
