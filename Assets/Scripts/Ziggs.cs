@@ -13,9 +13,9 @@ public class Ziggs : Character
     }
     public void ThrowBomb()
     {
-        Debug.Log("Ziggs throws a bomb");
         {
-
+         
         }
+        Debug.Log("Ziggs throws a bomb");
     }
 }
