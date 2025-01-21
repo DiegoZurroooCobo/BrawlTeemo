@@ -3,22 +3,24 @@ using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviourPunCallbacks
+public class PlayerManager : MonoBehaviourPun
 {
     // Start is called before the first frame update
     void Start()
     {
-      CameraWork cameraWork = this.GetComponent<CameraWork>();
-        if(cameraWork) 
+        CameraWork _camerawork = this.GetComponent<CameraWork>();
+
+        if(_camerawork) 
         {
-            if (photonView.IsMine)
-            {
-                cameraWork.OnStartFollowing();
+            if(photonView.IsMine) 
+            { 
+                _camerawork.OnStartFollowing();
             }
-            else
-            {
-                Debug.LogError("El componente CameraWork en el prefab", this);
-            }
+
+        }
+        else 
+        { 
+            Debug.LogError("El componente CameraWork en el prefab ", this);
         }
     }
 

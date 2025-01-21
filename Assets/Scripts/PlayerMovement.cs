@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviourPun
 {
     public float walkingSpeed, runningSpeed, acceleration, rotationSpeed, gravityScale, jumpForce;
 
@@ -36,6 +36,11 @@ public class PlayerMovement : MonoBehaviour
         Movement(x, z, shiftPressed);
 
         Rotation(mouseX);
+
+        if (!photonView.IsMine && PhotonNetwork.IsConnected)
+        {
+            return;
+        }
     }
 
     void Jump(bool jumpPressed)
