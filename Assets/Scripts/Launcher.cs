@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
@@ -7,6 +5,8 @@ using Photon.Realtime;
 public class Launcher : MonoBehaviourPunCallbacks
 {
     public GameObject buttonControl /*anti alonso*/, loadingElements;
+    bool isConnecting;
+
     #region Private Serializable Fields
     [Tooltip("El nuemro maximo de jugadors por room. Cuando la room esta llena, no se podran unir jugadores nuevos, asi que se crea una nueva room")]
     [SerializeField]
@@ -19,7 +19,6 @@ public class Launcher : MonoBehaviourPunCallbacks
     // el numero de version de este cliente. Los usuarios son separados por la gameVersion
 
     string gameVersion = "1.0";
-    bool isConnecting;
 
     #endregion
 
@@ -74,8 +73,14 @@ public class Launcher : MonoBehaviourPunCallbacks
         {
             // lo primero que intentamos hcaer es conectarnos a una room ya creada. Si hay una, guay chachi. Si no, nos llamara de vuelta a OnJoinRandomFailed()
             PhotonNetwork.JoinRandomRoom();
+            isConnecting=false;
             Debug.Log("OnconnectedToMaster fue llamado por el PUN");
         }
+    }
+
+    public void CharacterSelection(int selection)
+    {
+        //FindObjectOfType<DisableButton>().GetComponent<Button>().i
     }
 
     public override void OnDisconnected(DisconnectCause cause)

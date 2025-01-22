@@ -7,9 +7,11 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviourPunCallbacks
 {
     public static GameObject localPlayerInstance;
+    private uint[] playerIndex;
 
     private void Awake()
     {
+        playerIndex = new uint[2];
         if (photonView.IsMine)
         {
             PlayerManager.localPlayerInstance = this.gameObject;
@@ -61,6 +63,11 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         //siempre llama la base para quitar los callbacks 
         base.OnDisable();
         UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    public void SelectCharacter(int Selection)
+    {
+        playerIndex[0] = (uint)Selection;
     }
 
     #region MonoBehaviour Callbacks

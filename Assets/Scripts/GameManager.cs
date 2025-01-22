@@ -9,9 +9,16 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviourPunCallbacks
 {
     public GameObject playerPrefab;
+    private Character character;
+    private uint[] playerIndex;
 
+    private void Awake()
+    {
+        playerIndex = new uint[2];
+    }
     public void Start()
     {
+        character = new Teemo("Beemo", 10, Resources.Load<Mesh>("Model/beemo2__"));
         if (playerPrefab == null)
         {
             //Debug.LogError("<Color=Red><a>Missing</a></Color> playerPrefab Reference. Please set it up in GameObject 'Game Manager'", this);
@@ -39,9 +46,9 @@ public class GameManager : MonoBehaviourPunCallbacks
             LoadArena();
         }
     }
-    public void SelectCharacter(int value)
+    public void SelectCharacter(int Selection) 
     {
-
+        playerIndex[0] = (uint)Selection;
     }
 
     public override void OnPlayerLeftRoom(Player other)
@@ -59,6 +66,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.LeaveRoom();
     }
+
 
     #region Private Methods
 
