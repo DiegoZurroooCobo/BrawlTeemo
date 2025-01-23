@@ -82,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 55ca21d910d65b84ca52ea926a1bc17d, type: 3}
       propertyPath: m_Name
-      value: beemo2__
+      value: mesh
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -102,10 +102,10 @@ PrefabInstance:
       addedObject: {fileID: 5473813311250599374}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 55ca21d910d65b84ca52ea926a1bc17d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8966878373243852633}
+      addedObject: {fileID: 5295813713581239711}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 55ca21d910d65b84ca52ea926a1bc17d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5295813713581239711}
+      addedObject: {fileID: 3006090689370016904}
   m_SourcePrefab: {fileID: 100100000, guid: 55ca21d910d65b84ca52ea926a1bc17d, type: 3}
 --- !u!1 &3801740427248918539 stripped
 GameObject:
@@ -181,7 +181,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99b523248617b8748b9d7ee8ac413801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!143 &8966878373243852633
+--- !u!114 &5295813713581239711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3801740427248918539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f18a6fd6422d7948bdf47fa3cab4efe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 7
+  height: 3
+  centerOffset: {x: 0, y: 10, z: 0}
+  followOnStart: 0
+  smoothSpeed: 0.125
+--- !u!143 &3006090689370016904
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -207,23 +224,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5295813713581239711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3801740427248918539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f18a6fd6422d7948bdf47fa3cab4efe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distance: 7
-  height: 3
-  centerOffset: {x: 0, y: 0, z: 0}
-  followOnStart: 0
-  smoothSpeed: 0.125
 --- !u!4 &4578382267375270577 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 55ca21d910d65b84ca52ea926a1bc17d, type: 3}

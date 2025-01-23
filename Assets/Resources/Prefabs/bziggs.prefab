@@ -2678,7 +2678,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distance: 7
   height: 3
-  centerOffset: {x: 0, y: 0, z: 0}
+  centerOffset: {x: 0, y: 10, z: 0}
   followOnStart: 0
   smoothSpeed: 0.125
 --- !u!114 &7995983650254701260
