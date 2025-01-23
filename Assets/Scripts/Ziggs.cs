@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ziggs : Character
 {
-    public Ziggs(string name, float damage,int health) : base(name, damage,Resources.Load<GameObject>("Prefabs/bziggs"), health)
+    public Ziggs(string prefabPath, float damage,int health) : base(prefabPath, damage, health)
     {
     }
     public override float Attack()
