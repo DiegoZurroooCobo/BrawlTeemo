@@ -36,7 +36,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
     public void Start()
     {
-        character = new Teemo("Beemo", 10, Resources.Load<Mesh>("Model/beemo2__"));
         if (playerPrefab == null)
         {
             //Debug.LogError("<Color=Red><a>Missing</a></Color> playerPrefab Reference. Please set it up in GameObject 'Game Manager'", this);

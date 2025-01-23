@@ -20,57 +20,57 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         switch (GameManager.instance.playerIndex[_playerIndex])
         {
             case 0:
-                character=new Teemo(); break;
+                character = new Teemo("Beemo", 10, 100);
+                break;
+
+            case 1:
+                character = new Ziggs("bzzigss", 25, 100);
+                break;
+
+
+
         }
-        // Start is called before the first frame update
-        void Start()
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+        CameraWork _camerawork = this.GetComponent<CameraWork>();
+
+        if (_camerawork)
         {
-            CameraWork _camerawork = this.GetComponent<CameraWork>();
-
-            if (_camerawork)
+            if (photonView.IsMine)
             {
-                if (photonView.IsMine)
-                {
-                    _camerawork.OnStartFollowing();
-                }
+                _camerawork.OnStartFollowing();
+            }
 
-            }
-            else
-            {
-                Debug.LogError("El componente CameraWork en el prefab ", this);
-            }
+        }
+        else
+        {
+            Debug.LogError("El componente CameraWork en el prefab ", this);
+        }
 
 #if UNITY_5_4_OR_NEWER
-            UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
-        }
+        UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
 #endif
-
+    }
 #if UNITY_5_4_OR_NEWER
-        void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode loadingMode)
-        {
-            this.CalledOnLevelWasCalled(scene.buildIndex);
-        }
+    void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode loadingMode)
+    {
+        CalledOnLevelWasCalled(scene.buildIndex);
+    }
 
     private void CalledOnLevelWasCalled(int buildIndex)
     {
         throw new NotImplementedException();
     }
-#endif
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public override void OnDisable()
     {
         //siempre llama la base para quitar los callbacks 
         base.OnDisable();
         UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
     }
+#endif
 
-
-    #region MonoBehaviour Callbacks
 #if !UNITY_5_4_OR_NEWER
    
     private void OnLevelWasLoaded(int level)
@@ -88,6 +88,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks
             transform.position = new Vector3(0f, 5f, 0f);
         }
     }
-    #endregion
+
 
 }
