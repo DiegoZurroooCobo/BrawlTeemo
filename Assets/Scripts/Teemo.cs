@@ -7,9 +7,11 @@ public class Teemo : Character
     public Teemo(string name, float damage, int health) : base(name, damage,Resources.Load<GameObject>("Prefabs/beemo2__"),health)
     {
     
+       
     }
     public override float Attack()
     {
         return damage;
     }
+    
 }
