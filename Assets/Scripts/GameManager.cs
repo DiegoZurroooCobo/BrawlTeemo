@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             return;
         }
         Debug.LogFormat("PhotonNetwork : LoadingLevel {0}", PhotonNetwork.CurrentRoom.PlayerCount);
-        PhotonNetwork.LoadLevel("Room for  " + PhotonNetwork.CurrentRoom.PlayerCount); //Cargamos el nivel con Photon en vez de Unity
+        PhotonNetwork.LoadLevel("Room for " + PhotonNetwork.CurrentRoom.PlayerCount); //Cargamos el nivel con Photon en vez de Unity
 
     }
 

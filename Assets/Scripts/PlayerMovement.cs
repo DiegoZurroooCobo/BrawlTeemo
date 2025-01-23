@@ -21,6 +21,11 @@ public class PlayerMovement : MonoBehaviourPun
     // Update is called once per frame
     void Update()
     {
+        if (!photonView.IsMine && PhotonNetwork.IsConnected)
+        {
+            return;
+        }
+
         if (characterController.isGrounded)
         {
             yVelocity = 0;
@@ -37,10 +42,6 @@ public class PlayerMovement : MonoBehaviourPun
 
         Rotation(mouseX);
 
-        if (!photonView.IsMine && PhotonNetwork.IsConnected)
-        {
-            return;
-        }
     }
 
     void Jump(bool jumpPressed)
