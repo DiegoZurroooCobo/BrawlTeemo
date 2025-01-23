@@ -80,7 +80,7 @@ public class Launcher : MonoBehaviourPunCallbacks
 
     public void CharacterSelection(int selection)
     {
-        //FindObjectOfType<DisableButton>().GetComponent<Button>().i
+      GameManager.instance.SelectCharacter(selection);
     }
 
     public override void OnDisconnected(DisconnectCause cause)

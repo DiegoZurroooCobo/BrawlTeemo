@@ -8,13 +8,31 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
+
+    public static GameManager instance;
+
     public GameObject playerPrefab;
     private Character character;
-    private uint[] playerIndex;
+    public uint[] playerIndex;
+
+
 
     private void Awake()
     {
-        playerIndex = new uint[2];
+
+        if (!instance)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+            playerIndex = new uint[2];
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+
+
     }
     public void Start()
     {
@@ -22,7 +40,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         if (playerPrefab == null)
         {
             //Debug.LogError("<Color=Red><a>Missing</a></Color> playerPrefab Reference. Please set it up in GameObject 'Game Manager'", this);
-            Debug.LogFormat("We are Instantiating LocalPlayer from {0}",SceneManager.GetActiveScene().name);
+            Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManager.GetActiveScene().name);
             PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
         }
         else
@@ -46,9 +64,10 @@ public class GameManager : MonoBehaviourPunCallbacks
             LoadArena();
         }
     }
-    public void SelectCharacter(int Selection) 
+    public void SelectCharacter(int Selection)
     {
         playerIndex[0] = (uint)Selection;
+
     }
 
     public override void OnPlayerLeftRoom(Player other)

@@ -7,45 +7,49 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviourPunCallbacks
 {
     public static GameObject localPlayerInstance;
-    private uint[] playerIndex;
-
+    private uint _playerIndex = 0;
+    private Character character;
     private void Awake()
     {
-        playerIndex = new uint[2];
         if (photonView.IsMine)
         {
             PlayerManager.localPlayerInstance = this.gameObject;
         }
         DontDestroyOnLoad(this.gameObject);
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        CameraWork _camerawork = this.GetComponent<CameraWork>();
 
-        if (_camerawork)
+        switch (GameManager.instance.playerIndex[_playerIndex])
         {
-            if (photonView.IsMine)
+            case 0:
+                character=new Teemo(); break;
+        }
+        // Start is called before the first frame update
+        void Start()
+        {
+            CameraWork _camerawork = this.GetComponent<CameraWork>();
+
+            if (_camerawork)
             {
-                _camerawork.OnStartFollowing();
+                if (photonView.IsMine)
+                {
+                    _camerawork.OnStartFollowing();
+                }
+
+            }
+            else
+            {
+                Debug.LogError("El componente CameraWork en el prefab ", this);
             }
 
+#if UNITY_5_4_OR_NEWER
+            UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
         }
-        else
-        {
-            Debug.LogError("El componente CameraWork en el prefab ", this);
-        }
-
-#if UNITY_5_4_OR_NEWER 
-        UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
-    }
 #endif
 
 #if UNITY_5_4_OR_NEWER
-    void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode loadingMode)
-    {
-        this.CalledOnLevelWasCalled(scene.buildIndex);
-    }
+        void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode loadingMode)
+        {
+            this.CalledOnLevelWasCalled(scene.buildIndex);
+        }
 
     private void CalledOnLevelWasCalled(int buildIndex)
     {
@@ -65,10 +69,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    public void SelectCharacter(int Selection)
-    {
-        playerIndex[0] = (uint)Selection;
-    }
 
     #region MonoBehaviour Callbacks
 #if !UNITY_5_4_OR_NEWER

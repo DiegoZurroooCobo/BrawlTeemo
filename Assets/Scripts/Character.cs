@@ -11,7 +11,7 @@ public abstract class Character
     protected float damage;
     //protected float JumpForce;
 
-    public Character(string name, float damage,Mesh mesh)
+    public Character(string name, float damage,Mesh mesh,int health)
     {
         this.name = name;
         this.damage = damage;
