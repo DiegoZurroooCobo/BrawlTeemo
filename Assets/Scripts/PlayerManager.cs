@@ -13,24 +13,11 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     {
         if (photonView.IsMine)
         {
-            PlayerManager.localPlayerInstance = this.gameObject;
+          localPlayerInstance = gameObject;
         }
-        DontDestroyOnLoad(this.gameObject);
-
-        switch (GameManager.instance.playerIndex[_playerIndex])
-        {
-            case 0:
-                character = new Teemo("Beemo", 10, 100);
-                break;
-
-            case 1:
-                character = new Ziggs("bzzigss", 25, 100);
-                break;
-
-
-
-        }
+        DontDestroyOnLoad(gameObject);
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +35,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         {
             Debug.LogError("El componente CameraWork en el prefab ", this);
         }
+       
 
 #if UNITY_5_4_OR_NEWER
         UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
@@ -56,13 +44,23 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 #if UNITY_5_4_OR_NEWER
     void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode loadingMode)
     {
-        CalledOnLevelWasCalled(scene.buildIndex);
+        CalledOnLevelWasLoaded(scene.buildIndex);
+    }
+    void OnLevelWasLoaded(int level)
+    {
+        this.CalledOnLevelWasLoaded(level);
+    }
+    void CalledOnLevelWasLoaded(int level)
+
+    {
+        //Comprueba si estamos fuera de la arena, y si es el caso, nos spawnea en la arena en una safe zone
+        if (!Physics.Raycast(transform.position, -Vector3.up, 5f))
+        {
+            transform.position = new Vector3(0f, 5f, 0f);
+        }
     }
 
-    private void CalledOnLevelWasCalled(int buildIndex)
-    {
-        throw new NotImplementedException();
-    }
+
     public override void OnDisable()
     {
         //siempre llama la base para quitar los callbacks 
@@ -79,15 +77,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     }
 
 #endif
-
-    void CalledOnLevelWasLoaded(int level)
-    {
-        //Comprueba si estamos fuera de la arena, y si es el caso, nos spawnea en la arena en una safe zone
-        if (!Physics.Raycast(transform.position, -Vector3.up, 5f))
-        {
-            transform.position = new Vector3(0f, 5f, 0f);
-        }
-    }
 
 
 }
