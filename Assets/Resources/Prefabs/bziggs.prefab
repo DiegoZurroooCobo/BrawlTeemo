@@ -2616,8 +2616,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.13704, y: -3.2169, z: -3.32}
-  m_LocalScale: {x: 1.2925459, y: 1.2925459, z: 1.2925459}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8685901613329763365}
   - {fileID: 897335301893211517}
@@ -2646,7 +2646,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 2
-  m_Radius: 18.04
+  m_Radius: 18.18
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -2676,9 +2676,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f18a6fd6422d7948bdf47fa3cab4efe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 8.52
-  height: 10.22
-  centerOffset: {x: 0, y: 25, z: 0}
+  distance: 8
+  height: 60
+  centerOffset: {x: 0, y: 3, z: 0}
   followOnStart: 0
   smoothSpeed: 0.125
 --- !u!114 &7995983650254701260
@@ -2699,6 +2699,8 @@ MonoBehaviour:
   rotationSpeed: 100
   gravityScale: 1
   jumpForce: 10
+  throwRandomStuff: 323
+  randomPrefab: {fileID: 6663302154198939035, guid: c67812099529f6842b72dbff11bfff79, type: 3}
 --- !u!114 &5544598332356480932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3310,7 +3312,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3500302331866633113}
   m_Layer: 0
-  m_Name: Bziggs
+  m_Name: bziggs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

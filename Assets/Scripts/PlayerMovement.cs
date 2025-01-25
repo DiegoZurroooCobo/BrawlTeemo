@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviourPun
 {
     public float walkingSpeed, runningSpeed, acceleration, rotationSpeed, gravityScale, jumpForce;
+    public KeyCode throwRandomStuff;
+    public GameObject randomPrefab;
 
+
+    private Vector3 dir = Vector3.forward;
     private float yVelocity = 0, currentspeed, x, z;
     private CharacterController characterController;
     private Vector3 auxMovementVector;
@@ -15,7 +20,7 @@ public class PlayerMovement : MonoBehaviourPun
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-        gravityScale = Mathf.Abs(gravityScale);
+        gravityScale = Mathf.Abs(gravityScale); 
     }
 
     // Update is called once per frame
@@ -35,6 +40,10 @@ public class PlayerMovement : MonoBehaviourPun
         shiftPressed = Input.GetKey(KeyCode.LeftShift);
         float mouseX = Input.GetAxis("Mouse X");
         bool jumpPressed = Input.GetKeyDown(KeyCode.Space);
+        if (Input.GetKey(throwRandomStuff))
+        {
+           Instantiate(randomPrefab, dir, Quaternion.identity);
+        }
 
         Jump(jumpPressed);
         InterpolateSpeed();
