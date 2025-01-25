@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviourPun

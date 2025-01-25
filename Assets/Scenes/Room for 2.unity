@@ -663,6 +663,10 @@ PrefabInstance:
     - target: {fileID: 3094598082703363344, guid: 814b11cd266049f479c12e7f0c7de05a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 1207178322}
+    - target: {fileID: 3094598082703363344, guid: 814b11cd266049f479c12e7f0c7de05a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LeaveRoom
       objectReference: {fileID: 0}
     - target: {fileID: 4174272770441893883, guid: 814b11cd266049f479c12e7f0c7de05a, type: 3}
       propertyPath: m_Name
