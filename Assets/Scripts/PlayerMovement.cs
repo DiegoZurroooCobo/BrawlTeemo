@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviourPun
         bool jumpPressed = Input.GetKeyDown(KeyCode.Space);
         if (Input.GetKey(throwRandomStuff))
         {
-           PhotonNetwork.Instantiate(randomPrefab.name, dir, Quaternion.identity);
+           PhotonNetwork.Instantiate("Prefabs/" + randomPrefab.name, dir, Quaternion.identity);
         }
 
         Jump(jumpPressed);
