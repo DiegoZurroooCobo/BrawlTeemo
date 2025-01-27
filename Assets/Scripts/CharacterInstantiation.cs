@@ -29,7 +29,7 @@ public class CharacterInstantiation : MonoBehaviour
         {
             Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
 
-            PhotonNetwork.Instantiate(character.GetprefabPath(), new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
+            PhotonNetwork.Instantiate(character.GetprefabPath(), new Vector3(0f, 5f, 0f), Quaternion.identity, 0);//Eto va debido a que lo cargamos con la escena ya cargada y emtpmnces ya va bien
         }
         else
 
