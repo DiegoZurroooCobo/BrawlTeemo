@@ -7,6 +7,7 @@ using UnityEngine.TextCore.Text;
 public class CharacterInstantiation : MonoBehaviour
 {
     public GameObject playerPrefab;
+    
     Character character;
     public int playerIndex;
 
@@ -20,7 +21,7 @@ public class CharacterInstantiation : MonoBehaviour
                 break;
 
             case 1:
-                character = new Ziggs("Prefabs/Bziggs2", 25, 100);
+                character = new Ziggs("Prefabs/bziggs", 25, 100);
                 break;
         }
         //EL PREFAB NO SE PUEDE CARGAR DE PRIMERAS DEBIDO A QUE SI LO CARGAS 2 VECES DA ERROS PQ NO HAY QUE LEERLO 2 VECES
@@ -28,7 +29,7 @@ public class CharacterInstantiation : MonoBehaviour
         {
             Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
 
-            PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
+            PhotonNetwork.Instantiate(character.GetprefabPath(), new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
         }
         else
 
