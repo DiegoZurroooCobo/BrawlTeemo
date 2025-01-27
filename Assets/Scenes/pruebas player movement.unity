@@ -461,17 +461,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4187997246541077244, guid: 11934d5c6d41ac74db1979fdc9bdeded, type: 3}
-      propertyPath: m_Name
-      value: mesh
-      objectReference: {fileID: 0}
     - target: {fileID: 4914240660860708212, guid: 11934d5c6d41ac74db1979fdc9bdeded, type: 3}
       propertyPath: m_Name
       value: bziggs
-      objectReference: {fileID: 0}
-    - target: {fileID: 5588013155738639026, guid: 11934d5c6d41ac74db1979fdc9bdeded, type: 3}
-      propertyPath: sceneViewId
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
