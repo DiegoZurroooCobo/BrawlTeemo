@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviourPun
         shiftPressed = Input.GetKey(KeyCode.LeftShift);
         float mouseX = Input.GetAxis("Mouse X");
         bool jumpPressed = Input.GetKeyDown(KeyCode.Space);
+
         if (Input.GetKey(throwRandomStuff))
         {
            PhotonNetwork.Instantiate("Prefabs/" + randomPrefab.name, dir, Quaternion.identity);
