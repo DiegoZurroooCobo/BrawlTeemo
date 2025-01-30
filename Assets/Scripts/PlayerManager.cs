@@ -67,16 +67,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         base.OnDisable();
         UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-#endif
 
-#if !UNITY_5_4_OR_NEWER
-   
-    private void OnLevelWasLoaded(int level)
-    {
-        this.CalledOnLevelWasLoaded(level); 
-    }
 
 #endif
-
-
 }

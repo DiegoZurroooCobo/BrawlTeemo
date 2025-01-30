@@ -70,7 +70,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     public void SelectCharacter(int Selection)
     {
         playerIndex[0] = (uint)Selection;
-
     }
 
     public override void OnPlayerLeftRoom(Player other)

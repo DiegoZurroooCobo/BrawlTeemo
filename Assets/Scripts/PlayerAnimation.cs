@@ -17,6 +17,6 @@ public class PlayerAnimation : MonoBehaviour
     private void LateUpdate()
     {
         animator.SetFloat("Speed", playerMovement.GetCurrentSpeed() / playerMovement.runningSpeed);
-        animator.SetFloat("Direction", directionDampTime);
+        //animator.SetFloat("Direction", directionDampTime);
     }
 }

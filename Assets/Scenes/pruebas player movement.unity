@@ -421,13 +421,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1084143687972810519, guid: 11934d5c6d41ac74db1979fdc9bdeded, type: 3}
+      propertyPath: m_Radius
+      value: 17.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084143687972810519, guid: 11934d5c6d41ac74db1979fdc9bdeded, type: 3}
+      propertyPath: m_Center.y
+      value: 17.1
+      objectReference: {fileID: 0}
     - target: {fileID: 3500302331866633113, guid: 11934d5c6d41ac74db1979fdc9bdeded, type: 3}
       propertyPath: m_LocalPosition.x
       value: 817.4302
       objectReference: {fileID: 0}
     - target: {fileID: 3500302331866633113, guid: 11934d5c6d41ac74db1979fdc9bdeded, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 193.47
+      value: 193.26
       objectReference: {fileID: 0}
     - target: {fileID: 3500302331866633113, guid: 11934d5c6d41ac74db1979fdc9bdeded, type: 3}
       propertyPath: m_LocalPosition.z
@@ -465,8 +473,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: bziggs
       objectReference: {fileID: 0}
+    - target: {fileID: 5588013155738639026, guid: 11934d5c6d41ac74db1979fdc9bdeded, type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6048552851759741781, guid: 11934d5c6d41ac74db1979fdc9bdeded, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11934d5c6d41ac74db1979fdc9bdeded, type: 3}
@@ -525,6 +538,10 @@ PrefabInstance:
     - target: {fileID: 3811098034177289611, guid: da63aa937d773e54499b70743d757a92, type: 3}
       propertyPath: m_Name
       value: Beemo
+      objectReference: {fileID: 0}
+    - target: {fileID: 3811098034177289611, guid: da63aa937d773e54499b70743d757a92, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
