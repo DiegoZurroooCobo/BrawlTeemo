@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 88ff7d8edab45684089f099ced5c079e
+guid: 31f14611f691d974bbfdfb0f1d6d00e8
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -33,9 +33,9 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Skeleton.001|Run_Skeleton.001
-      takeName: Skeleton.001|Run_Skeleton.001
-      internalID: -8842100451611509165
+      name: Skeleton|Run_Skeleton
+      takeName: Skeleton|Run_Skeleton
+      internalID: -952203024878265764
       firstFrame: 0
       lastFrame: 96
       wrapMode: 0
@@ -45,35 +45,6 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Skeleton.001|Ziggs_Idle1.anm_Skeleton
-      takeName: Skeleton.001|Ziggs_Idle1.anm_Skeleton
-      internalID: 1226859848740490977
-      firstFrame: 0
-      lastFrame: 77
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
