@@ -2727,7 +2727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 8
-  height: 60
+  height: 80
   centerOffset: {x: 0, y: 3, z: 0}
   followOnStart: 0
   smoothSpeed: 0.125
@@ -2750,7 +2750,7 @@ MonoBehaviour:
   gravityScale: 1
   jumpForce: 10
   throwRandomStuff: 323
-  randomPrefab: {fileID: 6663302154198939035, guid: c67812099529f6842b72dbff11bfff79, type: 3}
+  randomPrefab: {fileID: 5834635324802695066, guid: e07fee42ea73cd741b35b8abac46c3ae, type: 3}
 --- !u!114 &5544598332356480932
 MonoBehaviour:
   m_ObjectHideFlags: 0

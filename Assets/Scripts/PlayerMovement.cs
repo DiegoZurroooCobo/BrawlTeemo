@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
+using Terresquall;
 
 public class PlayerMovement : MonoBehaviourPun
 {
-    public float walkingSpeed, runningSpeed, acceleration, rotationSpeed, gravityScale, jumpForce;
+    public float walkingSpeed, runningSpeed, acceleration, rotationSpeed, gravityScale;
     public KeyCode throwRandomStuff;
     public GameObject randomPrefab;
 
@@ -39,23 +40,15 @@ public class PlayerMovement : MonoBehaviourPun
         shiftPressed = Input.GetKey(KeyCode.LeftShift);
         float mouseX = Input.GetAxis("Mouse X");
         bool jumpPressed = Input.GetKeyDown(KeyCode.Space);
-
-        Jump(jumpPressed);
         InterpolateSpeed();
+
         Movement(x, z, shiftPressed);
 
         Rotation(mouseX);
 
     }
 
-    void Jump(bool jumpPressed)
-    {
-        if (jumpPressed && characterController.isGrounded)
-        {
-            yVelocity += Mathf.Sqrt(jumpForce * 3 * gravityScale); // raiz cuadrada que suaviza el salto
-        }
-    }
-
+#if UNITY_EDITOR || UNITY_STANDALONE 
     void Movement(float x, float z, bool shiftPressed)
     {
         Vector3 movementVector = transform.forward * currentspeed * z + transform.right * currentspeed * x;
@@ -68,6 +61,14 @@ public class PlayerMovement : MonoBehaviourPun
         movementVector *= Time.deltaTime; // se mueve igual si importar el framerate
         characterController.Move(movementVector); // metodo de character controller para moverlo
     }
+
+    void MovementJoystick() 
+    {
+        Vector3 movement = new Vector3 (VirtualJoystick.GetAxisRaw("Horizontal") * walkingSpeed, VirtualJoystick.GetAxisRaw("Vertical") * walkingSpeed);
+    }
+
+
+#endif
 
     void InterpolateSpeed()
     {
