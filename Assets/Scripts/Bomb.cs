@@ -34,6 +34,6 @@ public class Bomb : MonoBehaviour
     }
     public void ApplyParabolicThrow(Transform ownerTransform)
     {
-        rb.AddForce(((ownerTransform.localScale.x < 0 ? -ownerTransform.right : ownerTransform.right) + Vector3.up) * throwForce);
+        rb.AddForce((ownerTransform.forward + Vector3.up) * throwForce);
     }
 }

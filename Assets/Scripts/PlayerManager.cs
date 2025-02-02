@@ -7,7 +7,6 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviourPunCallbacks
 {
     public static GameObject localPlayerInstance;
-    private uint _playerIndex = 0;
     private Character character;
     private void Awake()
     {
