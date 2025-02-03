@@ -11,7 +11,7 @@ public class Bomb : MonoBehaviour
     private Vector3 dir;
     private Rigidbody rb;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
@@ -23,9 +23,13 @@ public class Bomb : MonoBehaviour
         if (currentTime >= maxTime)
         { 
             currentTime = 0;
-            rb.velocity = Vector3.zero;
+            ResetVelocity();
             gameObject.SetActive(false);
         } 
+    }
+    public void ResetVelocity()
+    {
+        rb.velocity = Vector3.zero;
     }
 
     private void FixedUpdate()

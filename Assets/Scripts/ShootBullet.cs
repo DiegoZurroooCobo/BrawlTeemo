@@ -6,7 +6,6 @@ using UnityEngine;
     {
         GameObjectPool bulletPool;
 
-
         // Start is called before the first frame update
         void Start()
         {
