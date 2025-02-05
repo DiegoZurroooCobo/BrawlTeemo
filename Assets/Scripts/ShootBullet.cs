@@ -16,7 +16,7 @@ public class ShotBullet : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        if (!photonView.IsMine && PhotonNetwork.IsConnected)
+        if (!photonView.IsMine )
         {
             return;
         }

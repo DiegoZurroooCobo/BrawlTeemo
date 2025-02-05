@@ -2727,9 +2727,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f18a6fd6422d7948bdf47fa3cab4efe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 8
-  height: 100
-  centerOffset: {x: 0, y: 3, z: 0}
+  distance: 116.3
+  height: 99.3
+  centerOffset: {x: 0, y: 4.76, z: 0}
   followOnStart: 0
   smoothSpeed: 0.125
 --- !u!114 &7995983650254701260
