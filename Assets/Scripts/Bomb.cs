@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
-    public float speed, throwForce;
+    public float throwForce;
     public float maxTime;
 
     private float currentTime;
@@ -30,11 +30,6 @@ public class Bomb : MonoBehaviour
     public void ResetVelocity()
     {
         rb.velocity = Vector3.zero;
-    }
-
-    private void FixedUpdate()
-    {
-        rb.velocity = speed * dir;
     }
     public void ApplyParabolicThrow(Transform ownerTransform)
     {

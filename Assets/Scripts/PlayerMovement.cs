@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviourPun
 
 
     private Vector3 dir = Vector3.forward;
-    private float yVelocity = 0, currentspeed, x, z;
+    public float yVelocity = 0, currentspeed, x, z;
     private CharacterController characterController;
     private Vector3 auxMovementVector;
     private bool shiftPressed;

@@ -7,7 +7,7 @@ using UnityEngine.TextCore.Text;
 public class CharacterInstantiation : MonoBehaviour
 {
     public GameObject playerPrefab;
-    
+
     Character character;
     public int playerIndex;
 
@@ -36,6 +36,6 @@ public class CharacterInstantiation : MonoBehaviour
         {
             Debug.LogFormat("Ignoring scene load for {0}", SceneManagerHelper.ActiveSceneName);
         }
-        //Instantiate(character.GetGO(), new Vector3(0, 0, 0), Quaternion.identity);
-    }
+    //Instantiate(character.GetGO(), new Vector3(0, 0, 0), Quaternion.identity);
+}
 }
