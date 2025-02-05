@@ -2173,6 +2173,10 @@ MonoBehaviour:
   gravityScale: 1
   throwRandomStuff: 0
   randomPrefab: {fileID: 0}
+  yVelocity: 0
+  currentspeed: 0
+  x: 0
+  z: 0
 --- !u!114 &1966515746424577987
 MonoBehaviour:
   m_ObjectHideFlags: 0

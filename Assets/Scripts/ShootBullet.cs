@@ -1,30 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using Photon.Pun.Demo.Asteroids;
 using UnityEngine;
-    public class ShotBullet : MonoBehaviour
+public class ShotBullet : MonoBehaviourPunCallbacks
+{
+    GameObjectPool bulletPool;
+
+    // Start is called before the first frame update
+    void Start()
     {
-        GameObjectPool bulletPool;
+        bulletPool = GetComponentInChildren<GameObjectPool>();
+    }
 
-        // Start is called before the first frame update
-        void Start()
+    // Update is called once per frame
+    void Update()
+    {
+        if (!photonView.IsMine && PhotonNetwork.IsConnected)
         {
-            bulletPool = GetComponentInChildren<GameObjectPool>();
+            return;
         }
-
-        // Update is called once per frame
-        void Update()
+        if (Input.GetButtonDown("Fire1"))
         {
-            if (Input.GetButtonDown("Fire1"))
-            {
-                GameObject obj = bulletPool.GimmeInactiveGameObject();
+            GameObject obj = bulletPool.GimmeInactiveGameObject();
 
-                if (obj)
-                {
-                    obj.SetActive(true); //quitar el boli del estuche, ya no esta disponible en la poool
-                    obj.transform.position = transform.position;
-                    obj.GetComponent<Bullet>().SetDirection(transform.forward);
-                }
+            if (obj)
+            {
+                obj.transform.position =new  Vector3(transform.position.x,transform.position.y+2,transform.position.z);
+                obj.transform.rotation =transform.rotation;
+                obj.GetComponent<Bullet>().SetDirection(transform.forward);
+                obj.SetActive(true); //quitar el boli del estuche, ya no esta disponible en la poool
             }
         }
     }
+}
