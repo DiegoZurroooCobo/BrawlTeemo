@@ -11,11 +11,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public static GameManager instance;
     public KeyCode Escape;
-    public GameObject playerPrefab;
     public uint[] playerIndex;
-
-
-
     private void Awake()
     {
         if (!instance)
@@ -31,11 +27,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
     public void Start()
     {
-        if (playerPrefab == null)//TODO ES PARA INSTACIAR
-        {
-            Debug.LogError("<Color=Red><a>Missing</a></Color> playerPrefab Reference. Please set it up in GameObject 'Game Manager'", this);
-        }
-        else
         {
             //if (PlayerManager.localPlayerInstance == null)
             //{
@@ -56,7 +47,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         if (Input.GetKeyUp(KeyCode.Escape))
         {
-            SceneManager.LoadScene("Menu");
+            PhotonNetwork.LeaveRoom();
         }
     }
     public override void OnLeftRoom()

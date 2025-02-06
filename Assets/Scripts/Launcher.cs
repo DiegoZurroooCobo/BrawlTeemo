@@ -12,7 +12,7 @@ public class Launcher : MonoBehaviourPunCallbacks
     [Tooltip("El nuemro maximo de jugadors por room. Cuando la room esta llena, no se podran unir jugadores nuevos, asi que se crea una nueva room")]
     [SerializeField]
     private byte maxPlayersPerRoom = 4;
-    
+
     #endregion
 
     #region Private Fields
@@ -29,7 +29,7 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         // esto se asegura que todos los metodos de PhotonNetwork.LoadLevel() en el cliente maestro y todos los clientes en la misma room
         // sincronizan sus niveles automaticamente 
-        PhotonNetwork.AutomaticallySyncScene = true;    
+        PhotonNetwork.AutomaticallySyncScene = true;
     }
 
     private void Start()
@@ -44,7 +44,7 @@ public class Launcher : MonoBehaviourPunCallbacks
     // Comienza el proceso de conexion
     // Si ya esta conectado, nos intentamos unir a una room aleatoria
     // si no esta conectado ya, conecta esta aplicacion con Photon Cloud Network
-    public void Connect() 
+    public void Connect()
     {
         loadingElements.SetActive(true);
         buttonControl.SetActive(false);
@@ -60,7 +60,7 @@ public class Launcher : MonoBehaviourPunCallbacks
         {
             // primero debemos conectar con el Photon Online Server 
             isConnecting = PhotonNetwork.ConnectUsingSettings();
-            PhotonNetwork.GameVersion = gameVersion;    
+            PhotonNetwork.GameVersion = gameVersion;
         }
     }
 
@@ -74,14 +74,14 @@ public class Launcher : MonoBehaviourPunCallbacks
         {
             // lo primero que intentamos hcaer es conectarnos a una room ya creada. Si hay una, guay chachi. Si no, nos llamara de vuelta a OnJoinRandomFailed()
             PhotonNetwork.JoinRandomRoom();
-            isConnecting=false;
+            isConnecting = false;
             Debug.Log("OnconnectedToMaster fue llamado por el PUN");
         }
     }
 
     public void CharacterSelection(int selection)
     {
-      GameManager.instance.SelectCharacter(selection);
+        GameManager.instance.SelectCharacter(selection);
     }
 
     public override void OnDisconnected(DisconnectCause cause)
@@ -94,24 +94,25 @@ public class Launcher : MonoBehaviourPunCallbacks
     {
         Debug.Log("Se ha llamado a OnJoinRandomFiled(). No hay rooms aleatorias disponibles, asi que se ha creado una ;)");
         // fallo al unirse a una room aleatoria. Puede que no exita o que esten llenas. Se crea una nueva 
-        PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = maxPlayersPerRoom});
+        PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = maxPlayersPerRoom });
     }
 
     public override void OnJoinedRoom()
     {
         Debug.Log("OnJoinedRoom() fue llamado por PUN. Ahora este cliente esta en una room :p");
         //Solo cargamos esto si somos el primer jugador, los demas dependeran de PhotonNetwork.AutomaticallySyncScene para sincronizarse a nuestra escena
-        if(PhotonNetwork.CurrentRoom.PlayerCount == 1) 
-        {
-            Debug.Log("Cargamos una room para 1 :D ");
-            PhotonNetwork.LoadLevel("Room for 1"); // Carga la room
-        }
+        //if(PhotonNetwork.CurrentRoom.PlayerCount == 1) 
+        //{
+        //    Debug.Log("Cargamos una room para 1 :D ");
+        //    PhotonNetwork.LoadLevel("Room for 1"); // Carga la room
+        //}
 
-        if (PhotonNetwork.CurrentRoom.PlayerCount == 2)
-        {
-            Debug.Log("Cargamos una room para 2 :D ");
-            PhotonNetwork.LoadLevel("Room for 2"); // Carga la room
-        }
+        //if (PhotonNetwork.CurrentRoom.PlayerCount == 2)
+        //{
+        //    PhotonNetwork.LoadLevel("Room for 2"); // Carga la room
+        //}
+        Debug.Log("Cargamos una room para " + PhotonNetwork.CurrentRoom.PlayerCount + " :D ");
+        PhotonNetwork.LoadLevel("Room for " + PhotonNetwork.CurrentRoom.PlayerCount); // Carga la room
     }
 
     #endregion

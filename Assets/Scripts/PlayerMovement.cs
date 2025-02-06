@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
-using Terresquall;
 
 public class PlayerMovement : MonoBehaviourPun
 {
@@ -60,12 +59,6 @@ public class PlayerMovement : MonoBehaviourPun
         movementVector *= Time.deltaTime; // se mueve igual si importar el framerate
         characterController.Move(movementVector); // metodo de character controller para moverlo
     }
-
-    void MovementJoystick() 
-    {
-        Vector3 movement = new Vector3 (VirtualJoystick.GetAxisRaw("Horizontal") * walkingSpeed, VirtualJoystick.GetAxisRaw("Vertical") * walkingSpeed);
-    }
-
 
 #endif
 

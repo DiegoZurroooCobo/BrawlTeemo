@@ -6,8 +6,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviourPunCallbacks
 {
-    public static GameObject localPlayerInstance;
-    private Character character;
+    public static GameObject localPlayerInstance                    ;
     private void Awake()
     {
         if (photonView.IsMine)
