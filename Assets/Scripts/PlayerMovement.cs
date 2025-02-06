@@ -8,7 +8,6 @@ public class PlayerMovement : MonoBehaviourPun
 {
     public float walkingSpeed, runningSpeed, acceleration, rotationSpeed, gravityScale;
     public KeyCode throwRandomStuff;
-    public GameObject randomPrefab;
 
 
     private Vector3 dir = Vector3.forward;

@@ -20,7 +20,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        CameraWork _camerawork = this.GetComponent<CameraWork>();
+        CameraWork _camerawork = gameObject.GetComponent<CameraWork>();
 
         if (_camerawork)
         {
@@ -47,7 +47,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     }
     void OnLevelWasLoaded(int level)
     {
-        this.CalledOnLevelWasLoaded(level);
+        CalledOnLevelWasLoaded(level);
     }
     void CalledOnLevelWasLoaded(int level)
 

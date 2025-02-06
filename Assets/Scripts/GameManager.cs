@@ -10,15 +10,14 @@ public class GameManager : MonoBehaviourPunCallbacks
 {
 
     public static GameManager instance;
+    public KeyCode Escape;
     public GameObject playerPrefab;
-    private Character character;
     public uint[] playerIndex;
 
 
 
     private void Awake()
     {
-
         if (!instance)
         {
             instance = this;
@@ -51,6 +50,14 @@ public class GameManager : MonoBehaviourPunCallbacks
             //} 
         }
         //ahora solo instanciamos si PlayerManager no tiene una referenccia a una instancia existente de localPlayer
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("Menu");
+        }
     }
     public override void OnLeftRoom()
     {

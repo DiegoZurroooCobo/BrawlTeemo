@@ -5,6 +5,7 @@ using Photon.Realtime;
 public class Launcher : MonoBehaviourPunCallbacks
 {
     public GameObject buttonControl /*anti alonso*/, loadingElements;
+
     bool isConnecting;
 
     #region Private Serializable Fields

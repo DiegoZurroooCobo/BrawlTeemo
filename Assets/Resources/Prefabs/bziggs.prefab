@@ -2750,7 +2750,6 @@ MonoBehaviour:
   rotationSpeed: 100
   gravityScale: 1
   throwRandomStuff: 323
-  randomPrefab: {fileID: 5834635324802695066, guid: e07fee42ea73cd741b35b8abac46c3ae, type: 3}
   yVelocity: 0
   currentspeed: 0
   x: 0

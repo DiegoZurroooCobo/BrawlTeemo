@@ -16,17 +16,18 @@ public class ShotBullet : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        if (!photonView.IsMine )
+        if (!photonView.IsMine && PhotonNetwork.IsConnected) 
         {
             return;
         }
+
         if (Input.GetButtonDown("Fire1"))
         {
             GameObject obj = bulletPool.GimmeInactiveGameObject();
 
             if (obj)
             {
-                obj.transform.position =new  Vector3(transform.position.x,transform.position.y+2,transform.position.z);
+                obj.transform.position = new Vector3(transform.position.x ,transform.position.y + 2f, transform.position.z);
                 obj.transform.rotation =transform.rotation;
                 obj.GetComponent<Bullet>().SetDirection(transform.forward);
                 obj.SetActive(true); //quitar el boli del estuche, ya no esta disponible en la poool

@@ -16,7 +16,7 @@ public class ShootBomb : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        if (!photonView.IsMine )
+        if (!photonView.IsMine && PhotonNetwork.IsConnected)
         {
             return;
         }
@@ -27,10 +27,11 @@ public class ShootBomb : MonoBehaviourPunCallbacks
             { 
                 obj.SetActive(true);
                 Vector3 vectorAttack = transform.position;
-                vectorAttack.z+=5;
+                vectorAttack.z+=5; 
                 vectorAttack.y += 5;
-                //vectorAttack.y += transform.position.y;
+                obj.transform.rotation = transform.rotation;
                 obj.transform.position = vectorAttack;
+                //vectorAttack.y += transform.position.y;
 
                 Bomb bomb = obj.GetComponent<Bomb>();
                 bomb.ResetVelocity();
