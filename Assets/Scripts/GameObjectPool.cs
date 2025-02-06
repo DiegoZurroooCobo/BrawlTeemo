@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class GameObjectPool : MonoBehaviour
+public class GameObjectPool : MonoBehaviourPunCallbacks
 {
     [Tooltip("Object that will go to the pool")]
     public GameObject objectToPool; //Objecto (en este caso tuberias) que añadimos a la pool
@@ -17,17 +18,17 @@ public class GameObjectPool : MonoBehaviour
     {
         _pool = new List<GameObject>(); //instanciamos la lista
 
-        for (int i = 0; i < poolSize; i++) //Instancia X objectos al inicio
+        for (int i = 0; i <= poolSize; i++) //Instancia X objectos al inicio
         {
-            AddGameObjectToPool();
+            AddGameObjectToPool(); // llama al metodo AddGameObjectToPool 
         }
     }
 
-    public GameObject GimmeInactiveGameObject()
+    public GameObject GimmeInactiveGameObject() // metodo GameObject que da gameObject 
     {
-        foreach (GameObject obj in _pool)
+        foreach (GameObject obj in _pool) //por cada objeto en la pool 
         {
-            if (!obj.activeSelf) //Si el objecto NO esta activado (desatcivado)
+            if (obj.GetComponent<PoolObject>().readyToUse) //Si el objecto NO esta activado (desatcivado)
             {
                 return obj; //Si el objetco no es activo lo damos
             }
@@ -35,7 +36,7 @@ public class GameObjectPool : MonoBehaviour
 
         if (shouldExpand) //Si deberia de expandirse la pool se instancia un nuevo objecto
         {
-            return AddGameObjectToPool();
+            return AddGameObjectToPool(); // se devuelve el metodo 
         }
 
         return null; //Si no encontramos nada devolvemos NULL, osea nada.
@@ -43,7 +44,7 @@ public class GameObjectPool : MonoBehaviour
 
     private GameObject AddGameObjectToPool() //añadir GameObject a la pool
     {
-        GameObject clone = Instantiate(objectToPool);
+        GameObject clone = PhotonNetwork.Instantiate("Prefabs/" + objectToPool.name, transform.position, Quaternion.identity);
         clone.SetActive(false); // desactivamos el objecto para que no se utilice de primeras, consume menos recuros asi
         _pool.Add(clone); // lo guardamos en la lista
 

@@ -7,14 +7,14 @@ public class PoolObject : MonoBehaviourPunCallbacks, IPunObservable
 {
     public bool readyToUse = true; 
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)//este metodo es pu metodo nuestro parar añadir a photon
     {
-        if (stream.IsWriting)
+        if (stream.IsWriting) // este es el que escribe la informacion  
         {
-            stream.SendNext(readyToUse);
+            stream.SendNext(readyToUse); //
             gameObject.SetActive(!readyToUse);
         }
-        else
+        else // este es el que recibe la informacion 
         {
             readyToUse = (bool)stream.ReceiveNext();
             gameObject.SetActive(!readyToUse);

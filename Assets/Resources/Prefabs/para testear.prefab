@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -8571127308046862026}
   - component: {fileID: 5120947242687461687}
   - component: {fileID: 5006176829549208369}
+  - component: {fileID: 8676508064903473635}
   m_Layer: 0
   m_Name: para testear
   m_TagString: Untagged
@@ -121,8 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3c7663b6e11fe840977eb2154dad10d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  maxTime: 4
+  speed: 10
+  maxTime: 2
 --- !u!54 &-8571127308046862026
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -170,7 +171,7 @@ MonoBehaviour:
   observableSearch: 0
   ObservedComponents:
   - {fileID: 5006176829549208369}
-  - {fileID: 5006176829549208369}
+  - {fileID: 8676508064903473635}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -190,3 +191,16 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &8676508064903473635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6663302154198939035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d7a59affbd469e40abc56a6f72c6c9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  readyToUse: 1
