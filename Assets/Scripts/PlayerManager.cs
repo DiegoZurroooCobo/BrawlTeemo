@@ -6,12 +6,13 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviourPunCallbacks
 {
-    public static GameObject localPlayerInstance                    ;
+    public GameObject playerUIPrefab;
+    public static GameObject localPlayerInstance;
     private void Awake()
     {
         if (photonView.IsMine)
         {
-          localPlayerInstance = gameObject;
+            localPlayerInstance = gameObject;
         }
         DontDestroyOnLoad(gameObject);
     }
@@ -33,7 +34,16 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         {
             Debug.LogError("El componente CameraWork en el prefab ", this); // si da error sale un debug 
         }
-       
+
+        if (playerUIPrefab != null)
+        {
+            GameObject uiGO = Instantiate(playerUIPrefab);
+            uiGO.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
+        }
+        else 
+        {
+            Debug.LogWarning("<Color=Red><a>Missing</a></Color> PlayerUiPrefab reference on player Prefab.", this);
+        }
 
 #if UNITY_5_4_OR_NEWER
         UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
@@ -56,13 +66,14 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         {
             transform.position = new Vector3(0f, 5f, 0f); // posicion inicial al comenzar 
         }
+
+        GameObject uiGo = Instantiate(this.playerUIPrefab);
+        uiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
     }
-
-
     public override void OnDisable() // metodo OnDisable 
     {
         //siempre llama la base para quitar los callbacks 
-        base.OnDisable(); 
+        base.OnDisable();
         UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
