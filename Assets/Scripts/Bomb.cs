@@ -6,6 +6,7 @@ public class Bomb : MonoBehaviour
 {
     public float throwForce;
     public float maxTime;
+    public float damage = 25f;
 
     private float currentTime;
     private Vector3 dir;

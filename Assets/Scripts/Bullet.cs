@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public float speed;
     public float maxTime;
+    public float damage = 10f;
 
     private float currentTime;
     private Vector3 _dir;
