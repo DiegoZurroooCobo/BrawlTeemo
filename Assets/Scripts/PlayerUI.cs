@@ -47,11 +47,11 @@ public class PlayerUI : MonoBehaviour
 
         targetTransform = target.GetComponent<Transform>();
         targetRenderer = target.GetComponent<Renderer>();
-        CharacterController chController = _target.GetComponent<CharacterController>();
+        CharacterController charController = _target.GetComponent<CharacterController>();
 
-        if (chController != null)
+        if (charController != null)
         {
-            characterControllerHeight = chController.height;
+            characterControllerHeight = charController.height;
         }
 
         if(playerNameText != null) 

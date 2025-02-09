@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Photon.Pun;
 using Photon.Pun.Demo.Asteroids;
 using UnityEngine;
-public class ShotBullet : MonoBehaviourPunCallbacks
+public class ShootBullet : MonoBehaviourPunCallbacks
 {
     GameObjectPool bulletPool;
 
@@ -16,22 +16,35 @@ public class ShotBullet : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        if (!photonView.IsMine && PhotonNetwork.IsConnected) // si photon.View no es mio Y PhotonNetwork esta conectado 
+        if (Input.GetButtonDown("Fire1"))
         {
-            return; 
+            Shoot();
         }
 
-        if (Input.GetButtonDown("Fire1")) // si se pulsa el boton Fire1 
+        foreach(Touch touch in Input.touches) 
         {
-            GameObject obj = bulletPool.GimmeInactiveGameObject(); // se iguala el obj al metodo GimmeInactiveGameObject de bullet pool 
-
-            if (obj) // si obj 
+            if (touch.phase == TouchPhase.Began)
             {
-                obj.transform.position = new Vector3(transform.position.x ,transform.position.y + 3.5f, transform.position.z + 3f); // cambia la posicion del obj a un nuevo Vector3
-                obj.transform.rotation = transform.rotation; // cambia la rotacion del obj 
-                obj.GetComponent<Bullet>().SetDirection(transform.forward); // Settea la direccion del objeto usando el metodo SetDirection() hacia adelante  
-                obj.SetActive(true); //quitar el boli del estuche, ya no esta disponible en la poool
+                Shoot();
             }
+        }
+    }
+
+    private void Shoot()
+    {
+        if (!photonView.IsMine && PhotonNetwork.IsConnected) // si photon.View no es mio Y PhotonNetwork esta conectado 
+        {
+            return;
+        }
+
+        GameObject obj = bulletPool.GimmeInactiveGameObject(); // se iguala el obj al metodo GimmeInactiveGameObject de bullet pool 
+
+        if (obj) // si obj 
+        {
+            obj.transform.position = new Vector3(transform.position.x, transform.position.y + 3.5f, transform.position.z + 3f); // cambia la posicion del obj a un nuevo Vector3
+            obj.transform.rotation = transform.rotation; // cambia la rotacion del obj 
+            obj.GetComponent<Bullet>().SetDirection(transform.forward); // Settea la direccion del objeto usando el metodo SetDirection() hacia adelante  
+            obj.SetActive(true); //quitar el boli del estuche, ya no esta disponible en la poool
         }
     }
 }

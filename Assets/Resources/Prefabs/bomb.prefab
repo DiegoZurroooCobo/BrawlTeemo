@@ -151,6 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   throwForce: 700
   maxTime: 5
+  damage: 25
 --- !u!114 &552949586144342802
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,8 +6,6 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviourPun
 {
     public float walkingSpeed, runningSpeed, acceleration, rotationSpeed, gravityScale;
-    public KeyCode throwRandomStuff;
-
 
     private Vector3 dir = Vector3.forward;
     public float yVelocity = 0, currentspeed, x, z;
@@ -37,16 +35,19 @@ public class PlayerMovement : MonoBehaviourPun
         z = Input.GetAxis("Vertical");
         shiftPressed = Input.GetKey(KeyCode.LeftShift);
         float mouseX = Input.GetAxis("Mouse X");
-        bool jumpPressed = Input.GetKeyDown(KeyCode.Space);
         InterpolateSpeed();
 
+#if UNITY_EDITOR || UNITY_STANDALONE 
         Movement(x, z, shiftPressed);
 
+#elif UNITY_ANDROID
+
+        Movement(x, z, shiftPressed);
+#endif
         Rotation(mouseX);
 
     }
 
-#if UNITY_EDITOR || UNITY_STANDALONE 
     void Movement(float x, float z, bool shiftPressed)
     {
         Vector3 movementVector = transform.forward * currentspeed * z + transform.right * currentspeed * x;
@@ -60,7 +61,8 @@ public class PlayerMovement : MonoBehaviourPun
         characterController.Move(movementVector); // metodo de character controller para moverlo
     }
 
-#endif
+
+
 
     void InterpolateSpeed()
     {

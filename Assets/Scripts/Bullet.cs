@@ -37,4 +37,9 @@ public class Bullet : MonoBehaviour
     {
         _dir = value;
     }
+
+    public void SetDamage(float value) 
+    { 
+        damage = value; 
+    }
 }

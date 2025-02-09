@@ -8,6 +8,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
 {
     public GameObject playerUIPrefab;
     public static GameObject localPlayerInstance;
+    public float health;
     private void Awake()
     {
         if (photonView.IsMine)
@@ -67,7 +68,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
             transform.position = new Vector3(0f, 5f, 0f); // posicion inicial al comenzar 
         }
 
-        GameObject uiGo = Instantiate(this.playerUIPrefab);
+        GameObject uiGo = Instantiate(playerUIPrefab);
         uiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
     }
     public override void OnDisable() // metodo OnDisable 
@@ -75,6 +76,31 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         //siempre llama la base para quitar los callbacks 
         base.OnDisable();
         UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (!photonView.IsMine)
+        {
+            return;
+        }
+        if(!collision.gameObject.GetComponent<ShootBomb>() || !collision.gameObject.GetComponent<ShootBullet>()) 
+        {
+            return;
+        }
+
+        health -= 10f;
+    }
+
+    private void Update()
+    {
+        //if(photonView.IsMine) 
+        //{ 
+        //    if(health <= 0f) 
+        //    { 
+        //        GameManager.instance.LeaveRoom();
+        //    }
+        //}
     }
 
 
