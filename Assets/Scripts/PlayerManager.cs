@@ -15,7 +15,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         {
             localPlayerInstance = gameObject;
         }
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject.transform.parent.gameObject);
     }
 
     // Start is called before the first frame update
@@ -78,29 +78,29 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (!photonView.IsMine)
-        {
-            return;
-        }
-        if(!collision.gameObject.GetComponent<ShootBomb>() || !collision.gameObject.GetComponent<ShootBullet>()) 
-        {
-            return;
-        }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (!photonView.IsMine)
+    //    {
+    //        return;
+    //    }
+    //    if(!collision.gameObject.GetComponent<ShootBomb>() || !collision.gameObject.GetComponent<ShootBullet>()) 
+    //    {
+    //        return;
+    //    }
 
-        health -= 10f;
-    }
+    //    health -= 10f;
+    //}
 
     private void Update()
     {
-        //if(photonView.IsMine) 
-        //{ 
-        //    if(health <= 0f) 
-        //    { 
-        //        GameManager.instance.LeaveRoom();
-        //    }
-        //}
+        if(photonView.IsMine) 
+        { 
+            if(health <= 0f) 
+            { 
+                GameManager.instance.LeaveRoom();
+            }
+        }
     }
 
 

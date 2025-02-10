@@ -5,21 +5,19 @@ using UnityEngine;
 
 public abstract class Character
 {
-    public float health = 100;
-    private GameObject gO;
     private string prefabPath;
-    protected float damage;
     //protected float JumpForce;
 
-    public Character(string prefabPath, float damage,int health)
+    public Character(string prefabPath)
     {
         this.prefabPath = prefabPath;
-        this.damage = damage;
     }
 
     public string GetprefabPath() { return prefabPath; }
-    public float GetDamage() { return damage; }
 
-    public abstract float Attack(); // Metodo abstracto que heredan los objetos
+    public virtual void Attack() 
+    {
+        return;
+    }
 
 }

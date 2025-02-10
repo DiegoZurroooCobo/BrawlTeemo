@@ -17,11 +17,11 @@ public class CharacterInstantiation : MonoBehaviour
         switch (GameManager.instance.playerIndex[playerIndex])
         {
             case 0:
-                character = new Teemo("Prefabs/Beemo", 10, 100);
+                character = new Teemo("Prefabs/Beemo");
                 break;
 
             case 1:
-                character = new Ziggs("Prefabs/bziggs", 25, 100);
+                character = new Ziggs("Prefabs/bziggs");
                 break;
         }
         //EL PREFAB NO SE PUEDE CARGAR DE PRIMERAS DEBIDO A QUE SI LO CARGAS 2 VECES DA ERROS PQ NO HAY QUE LEERLO 2 VECES
