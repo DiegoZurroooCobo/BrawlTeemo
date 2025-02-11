@@ -27,10 +27,7 @@ public class PlayerUI : MonoBehaviourPun
     {
         target = GetComponent<PlayerManager>();
 
-
         playerNameText.text = photonView.Owner.NickName;
-        
-
     }
 
 

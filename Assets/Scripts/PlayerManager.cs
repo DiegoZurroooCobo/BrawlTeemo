@@ -54,6 +54,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     void OnSceneLoaded(UnityEngine.SceneManagement.Scene scene, UnityEngine.SceneManagement.LoadSceneMode loadingMode) // metodo OnSceneLoaded 
     {
         CalledOnLevelWasLoaded(scene.buildIndex); // llama al metodo CalledOnLevelWasLoaded
+        GetComponentInChildren<GameObjectPool>()?.DelayInstantiation(); // la ? significa que si se cumple lo de la izquierda hace lo de la derecha 
     }
     void OnLevelWasLoaded(int level)
     {

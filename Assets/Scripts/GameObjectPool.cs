@@ -32,6 +32,11 @@ public class GameObjectPool : MonoBehaviourPunCallbacks
             {
                 return obj; //Si el objetco no es activo lo damos
             }
+            else 
+            {
+                Debug.Log("Da errooooooor");
+            }
+               
         }
 
         if (shouldExpand) //Si deberia de expandirse la pool se instancia un nuevo objecto
@@ -45,9 +50,30 @@ public class GameObjectPool : MonoBehaviourPunCallbacks
     private GameObject AddGameObjectToPool() //añadir GameObject a la pool
     {
         GameObject clone = PhotonNetwork.Instantiate("Prefabs/" + objectToPool.name, transform.position, Quaternion.identity);
-        clone.SetActive(false); // desactivamos el objecto para que no se utilice de primeras, consume menos recuros asi
-        _pool.Add(clone); // lo guardamos en la lista
-
+        if(clone != null) 
+        { 
+           _pool.Add(clone);
+        }
         return clone;
+        //clone.SetActive(false); // desactivamos el objecto para que no se utilice de primeras, consume menos recuros asi
+        //_pool.Add(clone); // lo guardamos en la lista
+
+        //return clone;
+    }
+
+    public void DelayInstantiation() 
+    {
+        StartCoroutine(WaitInstantiate());
+    }
+
+    IEnumerator WaitInstantiate() 
+    {
+        yield return new WaitForSeconds(0.4f);
+
+        _pool.Clear();
+        for (int i = 0; i <= poolSize; i++) 
+        {
+            AddGameObjectToPool();
+        }
     }
 }

@@ -3038,7 +3038,7 @@ MonoBehaviour:
   height: 99.3
   centerOffset: {x: 0, y: 4.76, z: 0}
   followOnStart: 0
-  smoothSpeed: 0.125
+  smoothSpeed: 1
 --- !u!114 &7995983650254701260
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -25,7 +25,7 @@ public class Bomb : MonoBehaviour
         { 
             currentTime = 0;
             ResetVelocity();
-            gameObject.SetActive(false);
+            GetComponent<PoolObject>().readyToUse = true;
         } 
     }
     public void ResetVelocity()
