@@ -45,6 +45,8 @@ public class ShootBullet : MonoBehaviourPunCallbacks
             obj.transform.rotation = transform.rotation; // cambia la rotacion del obj 
             obj.GetComponent<Bullet>().SetDirection(transform.forward); // Settea la direccion del objeto usando el metodo SetDirection() hacia adelante  
             obj.SetActive(true); //quitar el boli del estuche, ya no esta disponible en la poool
+
+            obj.GetComponent<PoolObject>().readyToUse = false;
         }
     }
 }

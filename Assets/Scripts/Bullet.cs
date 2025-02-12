@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour
         if (currentTime >= maxTime)
         {
             currentTime = 0;
-            gameObject.SetActive(false); //Se "devuelve" a la pool
+            GetComponent<PoolObject>().readyToUse = true;
         }
     }
 

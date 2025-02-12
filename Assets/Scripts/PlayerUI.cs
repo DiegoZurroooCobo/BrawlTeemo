@@ -15,8 +15,6 @@ public class PlayerUI : MonoBehaviourPun
 
     private PlayerManager target;
 
-
-
     private void Awake()
     {
 
@@ -34,16 +32,6 @@ public class PlayerUI : MonoBehaviourPun
     // Update is called once per frame
     void Update()
     {
-        //if (playerHealthSlider != null)
-        //{
-        //    playerHealthSlider.value = target.health;
-        //    Debug.Log("playerHealth no es null");
-
-        //if(target == null) 
-        //{
-        //    Destroy(this.gameObject);
-        //    return;
-        //}
-
+        
     }
 }

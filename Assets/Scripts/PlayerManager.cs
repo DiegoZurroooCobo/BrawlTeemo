@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviourPunCallbacks
+public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 {
     public GameObject playerUIPrefab;
     public static GameObject localPlayerInstance;
@@ -79,19 +79,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks
         UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (!photonView.IsMine)
-    //    {
-    //        return;
-    //    }
-    //    if(!collision.gameObject.GetComponent<ShootBomb>() || !collision.gameObject.GetComponent<ShootBullet>()) 
-    //    {
-    //        return;
-    //    }
-
-    //    health -= 10f;
-    //}
 
     private void Update()
     {
@@ -101,6 +88,18 @@ public class PlayerManager : MonoBehaviourPunCallbacks
             { 
                 GameManager.instance.LeaveRoom();
             }
+        }
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if(stream.IsWriting) 
+        { 
+            stream.SendNext(health);
+        }
+        else
+        {
+            health = (float)stream.ReceiveNext();
         }
     }
 
