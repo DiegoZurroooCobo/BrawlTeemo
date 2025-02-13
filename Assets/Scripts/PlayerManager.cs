@@ -85,8 +85,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
             if (health <= 0f)
             { 
                 
-                SceneManager.LoadScene("Losing scene");
-                Destroy(gameObject);
+               PhotonNetwork.LoadLevel("Losing scene");
+            
             }
         }
     }

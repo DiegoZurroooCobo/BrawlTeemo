@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public void Victory() 
     {
-        SceneManager.LoadScene("Winning scene");
+        PhotonNetwork.LoadLevel("Winning scene");
     }
 
     #endregion
