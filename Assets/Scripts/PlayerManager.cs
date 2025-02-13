@@ -69,7 +69,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         if ("Room for 2" == SceneManager.GetActiveScene().name)
         {
             GameManager.instance.Victory();
-            Destroy(gameObject);
+            
         }
         else
         {
