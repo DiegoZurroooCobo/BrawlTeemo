@@ -105,25 +105,22 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
             health = (float)stream.ReceiveNext();
         }
     }
-    public void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.GetComponent<Bullet>())
         {
 
             Bullet bullet = GetComponent<Bullet>();
             health -= bullet.GetDamage();
-
         }
-    
        else if (collision.gameObject.GetComponent<Bomb>())
         {
             Bomb bomb = GetComponent<Bomb>();
             health -= bomb.GetDamage();
+           
+
         }
-     
-    
-    
-    
+
     }
 
 
