@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     }
 
-    public void Victory() 
+    public void Victory()
     {
         PhotonNetwork.LoadLevel("Winning scene");
     }
@@ -123,7 +123,11 @@ public class GameManager : MonoBehaviourPunCallbacks
         Application.Quit();
     }
 
+    public void Defeat()
+    {
+        PhotonNetwork.LoadLevel("Losing scene");
 
+    }
 
 
 }

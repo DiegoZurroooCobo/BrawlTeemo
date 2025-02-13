@@ -9,7 +9,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 {
     public static GameObject localPlayerInstance;
     public float health;
-   
+
 
     private void Awake()
     {
@@ -18,6 +18,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
             localPlayerInstance = gameObject;
         }
         DontDestroyOnLoad(gameObject.transform.parent.gameObject);
+      
 
     }
 
@@ -38,7 +39,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         {
             Debug.LogError("El componente CameraWork en el prefab ", this); // si da error sale un debug 
         }
-
+        
 #if UNITY_5_4_OR_NEWER
         UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
 #endif
@@ -69,7 +70,23 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         if ("Room for 2" == SceneManager.GetActiveScene().name)
         {
             GameManager.instance.Victory();
-            
+
+        }
+        else
+        {
+            UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+    }
+    public void DuroDEMORIR()
+    {
+        base.OnDisable();
+        if (health <= 0f)
+        {
+            {
+
+                GameManager.instance.Defeat();
+                
+            }
         }
         else
         {
@@ -77,40 +94,30 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         }
     }
 
-
     private void Update()
+{
+}
+
+public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+{
+    if (stream.IsWriting)
     {
-        if (photonView.IsMine)
-        {
-            if (health <= 0f)
-            { 
-                
-               PhotonNetwork.LoadLevel("Losing scene");
-            
-            }
-        }
+        stream.SendNext(health);
+    }
+    else
+    {
+        health = (float)stream.ReceiveNext();
+    }
+}
+private void OnCollisionEnter(Collision collision)
+{
+    if (collision.gameObject.GetComponent<Bullet>())
+    {
+
+        Bullet bullet = collision.gameObject.GetComponent<Bullet>();
+        health -= bullet.GetDamage();
     }
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.IsWriting)
-        {
-            stream.SendNext(health);
-        }
-        else
-        {
-            health = (float)stream.ReceiveNext();
-        }
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.GetComponent<Bullet>())
-        {
-
-            Bullet bullet = collision.gameObject.GetComponent<Bullet>();
-            health -= bullet.GetDamage();
-        }
-      
-    }
+}
 #endif
 }
