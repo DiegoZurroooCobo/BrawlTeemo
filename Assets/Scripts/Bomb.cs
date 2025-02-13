@@ -22,11 +22,11 @@ public class Bomb : MonoBehaviour
     {
         currentTime += Time.deltaTime;
         if (currentTime >= maxTime)
-        { 
+        {
             currentTime = 0;
             ResetVelocity();
             GetComponent<PoolObject>().readyToUse = true;
-        } 
+        }
     }
     public void ResetVelocity()
     {
@@ -35,5 +35,16 @@ public class Bomb : MonoBehaviour
     public void ApplyParabolicThrow(Transform ownerTransform)
     {
         rb.AddForce((ownerTransform.forward + Vector3.up) * throwForce);
+    }
+    public void SetDamage(float value)
+    {
+        damage = value;
+    }
+
+
+    public float GetDamage()
+    {
+
+        return damage;
     }
 }

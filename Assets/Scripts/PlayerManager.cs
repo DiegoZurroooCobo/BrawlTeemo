@@ -9,6 +9,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     public GameObject playerUIPrefab;
     public static GameObject localPlayerInstance;
     public float health;
+   
+
     private void Awake()
     {
         if (photonView.IsMine)
@@ -16,6 +18,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
             localPlayerInstance = gameObject;
         }
         DontDestroyOnLoad(gameObject.transform.parent.gameObject);
+
     }
 
     // Start is called before the first frame update
@@ -41,7 +44,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
             GameObject uiGO = Instantiate(playerUIPrefab);
             uiGO.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
         }
-        else 
+        else
         {
             Debug.LogWarning("<Color=Red><a>Missing</a></Color> PlayerUiPrefab reference on player Prefab.", this);
         }
@@ -82,10 +85,10 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 
     private void Update()
     {
-        if(photonView.IsMine) 
-        { 
-            if(health <= 0f) 
-            { 
+        if (photonView.IsMine)
+        {
+            if (health <= 0f)
+            {
                 GameManager.instance.LeaveRoom();
             }
         }
@@ -93,8 +96,8 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        if(stream.IsWriting) 
-        { 
+        if (stream.IsWriting)
+        {
             stream.SendNext(health);
         }
         else
@@ -102,6 +105,27 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
             health = (float)stream.ReceiveNext();
         }
     }
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<Bullet>())
+        {
+
+            Bullet bullet = GetComponent<Bullet>();
+            health -= bullet.GetDamage();
+
+        }
+    
+       else if (collision.gameObject.GetComponent<Bomb>())
+        {
+            Bomb bomb = GetComponent<Bomb>();
+            health -= bomb.GetDamage();
+        }
+     
+    
+    
+    
+    }
+
 
 
 #endif

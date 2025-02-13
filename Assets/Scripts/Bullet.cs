@@ -42,4 +42,11 @@ public class Bullet : MonoBehaviour
     { 
         damage = value; 
     }
+    public float GetDamage()
+    {
+        return damage;  
+    }
+
+
+
 }
