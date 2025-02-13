@@ -8,7 +8,7 @@ public class GameObjectPool : MonoBehaviourPunCallbacks
     [Tooltip("Object that will go to the pool")]
     public GameObject objectToPool; //Objecto (en este caso tuberias) que añadimos a la pool
     [Tooltip("Initial pool size")]
-    public uint poolSize; //unit = "unisigned int"
+    public uint poolSize, currentPoolSize; //unit = "unisigned int"
     [Tooltip("If true, size increments")]
     public bool shouldExpand = false; //Opcion de expandir la lista, por defecto viene falso, es lo mejor
 
@@ -18,7 +18,7 @@ public class GameObjectPool : MonoBehaviourPunCallbacks
     {
         _pool = new List<GameObject>(); //instanciamos la lista
 
-        for (int i = 0; i <= poolSize; i++) //Instancia X objectos al inicio
+        for (int i = 0; i < poolSize; i++) //Instancia X objectos al inicio
         {
             AddGameObjectToPool(); // llama al metodo AddGameObjectToPool 
         }
@@ -53,6 +53,7 @@ public class GameObjectPool : MonoBehaviourPunCallbacks
         if(clone != null) 
         { 
            _pool.Add(clone);
+            currentPoolSize++;
         }
         return clone;
         //clone.SetActive(false); // desactivamos el objecto para que no se utilice de primeras, consume menos recuros asi
@@ -74,6 +75,7 @@ public class GameObjectPool : MonoBehaviourPunCallbacks
         for (int i = 0; i <= poolSize; i++) 
         {
             AddGameObjectToPool();
+
         }
     }
 }

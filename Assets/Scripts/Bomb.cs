@@ -7,7 +7,7 @@ public class Bomb : MonoBehaviour
     public float throwForce;
     public float maxTime;
     public float damage = 25f;
-
+    public float radius = 5f;
     private float currentTime;
     private Vector3 dir;
     private Rigidbody rb;
@@ -26,8 +26,30 @@ public class Bomb : MonoBehaviour
             currentTime = 0;
             ResetVelocity();
             GetComponent<PoolObject>().readyToUse = true;
+            Explode();
+            gameObject.SetActive(false);
         }
     }
+
+    private void Explode() 
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
+        foreach (Collider collider in colliders)
+        {
+            PlayerManager PM = collider.GetComponent<PlayerManager>();
+            if (PM) 
+            { 
+                PM.health -= damage;
+            }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(transform.position, radius);
+    }
+
     public void ResetVelocity()
     {
         rb.velocity = Vector3.zero;

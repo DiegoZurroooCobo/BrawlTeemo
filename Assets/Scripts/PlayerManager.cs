@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 {
-    public GameObject playerUIPrefab;
     public static GameObject localPlayerInstance;
     public float health;
    
@@ -40,16 +39,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
             Debug.LogError("El componente CameraWork en el prefab ", this); // si da error sale un debug 
         }
 
-        if (playerUIPrefab != null)
-        {
-            GameObject uiGO = Instantiate(playerUIPrefab);
-            uiGO.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
-        }
-        else
-        {
-            Debug.LogWarning("<Color=Red><a>Missing</a></Color> PlayerUiPrefab reference on player Prefab.", this);
-        }
-
 #if UNITY_5_4_OR_NEWER
         UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
 #endif
@@ -72,9 +61,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         {
             transform.position = new Vector3(0f, 5f, 0f); // posicion inicial al comenzar 
         }
-
-        GameObject uiGo = Instantiate(playerUIPrefab);
-        uiGo.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
     }
     public override void OnDisable() // metodo OnDisable 
     {
@@ -121,11 +107,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
             Bullet bullet = collision.gameObject.GetComponent<Bullet>();
             health -= bullet.GetDamage();
         }
-       else if (collision.gameObject.GetComponent<Bomb>())
-        {
-            Bomb bomb = collision.gameObject.GetComponent<Bomb>();
-            health -= bomb.GetDamage();
-        }
+      
     }
 #endif
 }

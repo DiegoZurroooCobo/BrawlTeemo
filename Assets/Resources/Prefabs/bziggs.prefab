@@ -1238,6 +1238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToPool: {fileID: 5834635324802695066, guid: e07fee42ea73cd741b35b8abac46c3ae, type: 3}
   poolSize: 0
+  currentPoolSize: 0
   shouldExpand: 1
 --- !u!1 &1840067584653570989
 GameObject:
@@ -3021,7 +3022,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99b523248617b8748b9d7ee8ac413801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerUIPrefab: {fileID: 4858517752613674501, guid: 5cea0f586047382409fb456ad391ca21, type: 3}
   health: 100
 --- !u!114 &5606378976555365376
 MonoBehaviour:
@@ -3052,7 +3052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c47807b08447cb42a5c4e9a7fa92e62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkingSpeed: 7
+  walkingSpeed: 50
   runningSpeed: 15
   acceleration: 0.8
   rotationSpeed: 100
