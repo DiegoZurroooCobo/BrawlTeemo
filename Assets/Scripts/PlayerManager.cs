@@ -18,7 +18,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
             localPlayerInstance = gameObject;
         }
         DontDestroyOnLoad(gameObject.transform.parent.gameObject);
-      
+
 
     }
 
@@ -39,7 +39,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         {
             Debug.LogError("El componente CameraWork en el prefab ", this); // si da error sale un debug 
         }
-        
+
 #if UNITY_5_4_OR_NEWER
         UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
 #endif
@@ -77,7 +77,9 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
             UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
         }
     }
-    public void DuroDEMORIR()
+
+
+    private void Update()
     {
         base.OnDisable();
         if (health <= 0f)
@@ -85,39 +87,33 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
             {
 
                 GameManager.instance.Defeat();
-                
+                GameManager.instance.LoadScene("Losing scene");
+
             }
+        }
+
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(health);
         }
         else
         {
-            UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
+            health = (float)stream.ReceiveNext();
         }
     }
-
-    private void Update()
-{
-}
-
-public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-{
-    if (stream.IsWriting)
+    private void OnCollisionEnter(Collision collision)
     {
-        stream.SendNext(health);
-    }
-    else
-    {
-        health = (float)stream.ReceiveNext();
-    }
-}
-private void OnCollisionEnter(Collision collision)
-{
-    if (collision.gameObject.GetComponent<Bullet>())
-    {
+        if (collision.gameObject.GetComponent<Bullet>())
+        {
 
-        Bullet bullet = collision.gameObject.GetComponent<Bullet>();
-        health -= bullet.GetDamage();
-    }
+            Bullet bullet = collision.gameObject.GetComponent<Bullet>();
+            health -= bullet.GetDamage();
+        }
 
-}
+    }
 #endif
 }
