@@ -120,8 +120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToPool: {fileID: 6663302154198939035, guid: c67812099529f6842b72dbff11bfff79, type: 3}
-  poolSize: 1
-  shouldExpand: 0
+  poolSize: 0
+  shouldExpand: 1
 --- !u!1 &557029207548769164
 GameObject:
   m_ObjectHideFlags: 0
@@ -2814,6 +2814,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 4609324514475066540}
+  - {fileID: 5473813311250599374}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -2845,7 +2846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99b523248617b8748b9d7ee8ac413801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerUIPrefab: {fileID: 0}
+  playerUIPrefab: {fileID: 4858517752613674501, guid: 5cea0f586047382409fb456ad391ca21, type: 3}
   health: 100
 --- !u!114 &5295813713581239711
 MonoBehaviour:
@@ -2859,11 +2860,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f18a6fd6422d7948bdf47fa3cab4efe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 116
-  height: 99.3
+  distance: 164.3
+  height: 135.4
   centerOffset: {x: 0, y: 4.75, z: 0}
   followOnStart: 0
-  smoothSpeed: 0.125
+  smoothSpeed: 10
 --- !u!143 &3006090689370016904
 CharacterController:
   m_ObjectHideFlags: 0

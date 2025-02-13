@@ -47,4 +47,9 @@ public class Bomb : MonoBehaviour
 
         return damage;
     }
+
+    public void OnDisable()
+    {
+        
+    }
 }

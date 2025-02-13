@@ -1237,8 +1237,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToPool: {fileID: 5834635324802695066, guid: e07fee42ea73cd741b35b8abac46c3ae, type: 3}
-  poolSize: 1
-  shouldExpand: 0
+  poolSize: 0
+  shouldExpand: 1
 --- !u!1 &1840067584653570989
 GameObject:
   m_ObjectHideFlags: 0
@@ -3096,6 +3096,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
+  - {fileID: 4931706658555679451}
   - {fileID: 5544598332356480932}
   - {fileID: 432453878648991302}
   sceneViewId: 0

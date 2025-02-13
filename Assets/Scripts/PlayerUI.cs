@@ -32,6 +32,6 @@ public class PlayerUI : MonoBehaviourPun
     // Update is called once per frame
     void Update()
     {
-        
+        playerHealthSlider.value = target.health;
     }
 }

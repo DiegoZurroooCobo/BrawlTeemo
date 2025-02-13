@@ -23,4 +23,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Losing scene.unity
+    guid: 6a1084a04e7a2544d84c7377aabbeb81
+  - enabled: 1
+    path: Assets/Scenes/Winning scene.unity
+    guid: f3c844ff8cbe4a947b10f5ae16c57d5a
   m_configObjects: {}

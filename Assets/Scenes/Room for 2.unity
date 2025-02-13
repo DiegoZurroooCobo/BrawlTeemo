@@ -735,6 +735,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &1027034429
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1027034431}
+  - component: {fileID: 1027034430}
+  m_Layer: 0
+  m_Name: ButtonFunction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1027034430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027034429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d5ac2777df57dd40b01053cb1220ca8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1027034431
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027034429}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 296.378, y: 282.6174, z: 46.96402}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1207178320 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5223267300577973700, guid: cd77c96775013a64c8f8ef2d2f96455d, type: 3}
@@ -753,7 +797,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Escape: 27
-  playerPrefab: {fileID: 2586298240392007853, guid: 9016b5d2fb6f2fe4391c342d607fbeee, type: 3}
   playerIndex: 0000000001000000
 --- !u!1 &1288482139
 GameObject:
@@ -1186,7 +1229,15 @@ PrefabInstance:
     - target: {fileID: 3094598082703363344, guid: 814b11cd266049f479c12e7f0c7de05a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1207178322}
+      objectReference: {fileID: 1027034430}
+    - target: {fileID: 3094598082703363344, guid: 814b11cd266049f479c12e7f0c7de05a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LauncherScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 3094598082703363344, guid: 814b11cd266049f479c12e7f0c7de05a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ButtonFunction, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 4174272770441893883, guid: 814b11cd266049f479c12e7f0c7de05a, type: 3}
       propertyPath: m_Name
       value: LeaveButton
@@ -1296,3 +1347,4 @@ SceneRoots:
   - {fileID: 256007254}
   - {fileID: 1288482142}
   - {fileID: 179661777}
+  - {fileID: 1027034431}

@@ -101,7 +101,29 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     }
 
+    public void Victory() 
+    {
+        SceneManager.LoadScene("Winning scene");
+    }
+
     #endregion
+
+    public void LoadScene(string SceneName) // Te lleva a la escena que te selecciones como la primera
+    {
+        Debug.Log("Soy Concha, entro");
+        //AudioManager.instance.PlayAudio(enterClip, "enterClip");
+        SceneManager.LoadScene(SceneName);
+        // Limpia todos los sonidos que estan sonando 
+    }
+
+    public void ExitGame() // Te permite salir del menu del juego 
+    {
+        Debug.Log("Exit!");
+        //AudioManager.instance.PlayAudio(exitClip, "exitClip");
+        Application.Quit();
+    }
+
+
 
 
 }

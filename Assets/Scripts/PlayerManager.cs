@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 {
@@ -79,7 +80,14 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     {
         //siempre llama la base para quitar los callbacks 
         base.OnDisable();
-        UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
+        if ("Room for 2" == SceneManager.GetActiveScene().name)
+        {
+            GameManager.instance.Victory();
+        }
+        else
+        {
+            UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
     }
 
 
@@ -89,7 +97,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         {
             if (health <= 0f)
             {
-                GameManager.instance.LeaveRoom();
+                SceneManager.LoadScene("Losing scene");
             }
         }
     }
@@ -110,20 +118,14 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         if (collision.gameObject.GetComponent<Bullet>())
         {
 
-            Bullet bullet = GetComponent<Bullet>();
+            Bullet bullet = collision.gameObject.GetComponent<Bullet>();
             health -= bullet.GetDamage();
         }
        else if (collision.gameObject.GetComponent<Bomb>())
         {
-            Bomb bomb = GetComponent<Bomb>();
+            Bomb bomb = collision.gameObject.GetComponent<Bomb>();
             health -= bomb.GetDamage();
-           
-
         }
-
     }
-
-
-
 #endif
 }
