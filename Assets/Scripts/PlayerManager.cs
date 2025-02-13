@@ -69,6 +69,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         if ("Room for 2" == SceneManager.GetActiveScene().name)
         {
             GameManager.instance.Victory();
+            Destroy(gameObject);
         }
         else
         {
@@ -82,8 +83,10 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
         if (photonView.IsMine)
         {
             if (health <= 0f)
-            {
+            { 
+                
                 SceneManager.LoadScene("Losing scene");
+                Destroy(gameObject);
             }
         }
     }
