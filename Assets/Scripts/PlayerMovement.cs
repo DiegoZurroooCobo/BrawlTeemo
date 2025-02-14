@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
+using Terresquall;
 
 public class PlayerMovement : MonoBehaviourPun
 {
     public float walkingSpeed, runningSpeed, acceleration, rotationSpeed, gravityScale;
 
     private Vector3 dir = Vector3.forward;
-    public float yVelocity = 0, currentspeed, x, z;
+    public float yVelocity = 0, currentspeed, x, z, xMobile, zMobile;
     private CharacterController characterController;
     private Vector3 auxMovementVector;
     private bool shiftPressed;
@@ -33,22 +34,25 @@ public class PlayerMovement : MonoBehaviourPun
         }
         x = Input.GetAxis("Horizontal");
         z = Input.GetAxis("Vertical");
-        shiftPressed = Input.GetKey(KeyCode.LeftShift);
+
+        xMobile = VirtualJoystick.GetAxisRaw("Horizontal", 1);
+        zMobile = VirtualJoystick.GetAxisRaw("Vertical", 1);
+        
         float mouseX = Input.GetAxis("Mouse X");
         InterpolateSpeed();
 
 #if UNITY_EDITOR || UNITY_STANDALONE 
-        Movement(x, z, shiftPressed);
+        Movement(x, z);
 
 #elif UNITY_ANDROID
-
-        Movement(x, z, shiftPressed);
+       MovementMobile(xMobile, zMobile) 
 #endif
+
         Rotation(mouseX);
 
     }
 
-    void Movement(float x, float z, bool shiftPressed)
+    void Movement(float x, float z)
     {
         Vector3 movementVector = transform.forward * currentspeed * z + transform.right * currentspeed * x;
         auxMovementVector = movementVector;
@@ -61,8 +65,18 @@ public class PlayerMovement : MonoBehaviourPun
         characterController.Move(movementVector); // metodo de character controller para moverlo
     }
 
+    void MovementMobile(float xMobile, float zMobile) 
+    {
+        Vector3 movementVector = transform.forward * currentspeed * zMobile + transform.right * currentspeed * xMobile;
+        auxMovementVector = movementVector;
 
+        yVelocity -= gravityScale;
 
+        movementVector.y = yVelocity;
+
+        movementVector *= Time.deltaTime; // se mueve igual si importar el framerate
+        characterController.Move(movementVector); // metodo de character controller para moverlo
+    }
 
     void InterpolateSpeed()
     {

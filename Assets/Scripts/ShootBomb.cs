@@ -15,12 +15,14 @@ public class ShootBomb : MonoBehaviourPunCallbacks
 
     // Update is called once per frame
     void Update() 
-    { 
+    {
+#if UNITY_EDITOR || UNITY_STANDALONE
         if (Input.GetButtonDown("Fire1")) // si se pulsa el boton de dispara 
         {
             Shoot();
         }
 
+#elif UNITY_ANDROID
         foreach(Touch touch in Input.touches) 
         { 
             if(touch.phase == TouchPhase.Began) 
@@ -28,9 +30,12 @@ public class ShootBomb : MonoBehaviourPunCallbacks
                 Shoot();
             }
         }   
+
+#endif
+
     }
 
-    private void Shoot() 
+    public void Shoot() 
     {
         if (!photonView.IsMine && PhotonNetwork.IsConnected) // si photonview no es mio y photonNetwork esta conectado 
         {
