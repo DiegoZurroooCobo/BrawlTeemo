@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviourPun
     private CharacterController characterController;
     private Vector3 auxMovementVector;
     private bool shiftPressed;
+    private VariableJoystick joystick;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,11 +46,11 @@ public class PlayerMovement : MonoBehaviourPun
         Movement(x, z);
 
 #elif UNITY_ANDROID
-       MovementMobile(xMobile, zMobile) 
+       MovementMobile(xMobile, zMobile);
+
 #endif
 
         Rotation(mouseX);
-
     }
 
     void Movement(float x, float z)
@@ -67,7 +68,7 @@ public class PlayerMovement : MonoBehaviourPun
 
     void MovementMobile(float xMobile, float zMobile) 
     {
-        Vector3 movementVector = transform.forward * currentspeed * zMobile + transform.right * currentspeed * xMobile;
+        Vector3 movementVector = transform.forward * currentspeed * joystick.Vertical + transform.right * currentspeed * joystick.Horizontal;
         auxMovementVector = movementVector;
 
         yVelocity -= gravityScale;
