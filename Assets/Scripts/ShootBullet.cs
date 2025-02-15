@@ -16,11 +16,12 @@ public class ShootBullet : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
+#if  UNITY_EDITOR || UNITY_STANDALONE
         if (Input.GetButtonDown("Fire1"))
         {
             Shoot();
         }
-
+#elif UNITY_ANDROID
         foreach(Touch touch in Input.touches) 
         {
             if (touch.phase == TouchPhase.Began)
@@ -28,6 +29,7 @@ public class ShootBullet : MonoBehaviourPunCallbacks
                 Shoot();
             }
         }
+#endif
     }
 
     private void Shoot()

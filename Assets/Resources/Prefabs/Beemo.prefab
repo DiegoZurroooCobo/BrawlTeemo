@@ -2719,6 +2719,8 @@ MonoBehaviour:
   currentspeed: 0
   x: 0
   z: 0
+  xMobile: 0
+  zMobile: 0
 --- !u!114 &1966515746424577987
 MonoBehaviour:
   m_ObjectHideFlags: 0

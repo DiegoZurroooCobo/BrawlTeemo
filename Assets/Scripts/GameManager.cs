@@ -17,8 +17,8 @@ public class GameManager : MonoBehaviourPunCallbacks
         if (!instance)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
             playerIndex = new uint[2];
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -110,7 +110,6 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public void LoadScene(string SceneName) // Te lleva a la escena que te selecciones como la primera
     {
-        Debug.Log("Soy Concha, entro");
         //AudioManager.instance.PlayAudio(enterClip, "enterClip");
         SceneManager.LoadScene(SceneName);
         // Limpia todos los sonidos que estan sonando 

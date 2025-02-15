@@ -30,7 +30,6 @@ public class ShootBomb : MonoBehaviourPunCallbacks
                 Shoot();
             }
         }   
-
 #endif
 
     }
