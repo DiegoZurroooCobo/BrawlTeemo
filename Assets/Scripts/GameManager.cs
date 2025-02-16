@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public static GameManager instance;
     public KeyCode Escape;
     public uint[] playerIndex;
+   
     private void Awake()
     {
         if (!instance)
@@ -94,12 +95,16 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
     public void Defeat()
     {
+        
+        GameManager.instance.LeaveRoom();
+        Destroy(this.gameObject);
         PhotonNetwork.LoadLevel("Losing scene");
 
     }
 
     #endregion
 
+    
     public void LoadScene(string SceneName) // Te lleva a la escena que te selecciones como la primera
     {
         //AudioManager.instance.PlayAudio(enterClip, "enterClip");

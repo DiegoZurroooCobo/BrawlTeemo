@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviourPun
     private Vector3 auxMovementVector;
     private bool shiftPressed;
     public FixedJoystick joystick;
+    public bool winnerPotencial;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -33,6 +34,9 @@ public class PlayerMovement : MonoBehaviourPun
     // Update is called once per frame
     void Update()
     {
+
+
+
         if (!photonView.IsMine && PhotonNetwork.IsConnected)
         {
             return;
@@ -61,7 +65,7 @@ public class PlayerMovement : MonoBehaviourPun
         Rotation(mouseX);
     }
 
-    void Movement(float x, float z) 
+    void Movement(float x, float z)
     {
         Vector3 movementVector = transform.forward * currentspeed * z + transform.right * currentspeed * x;
         auxMovementVector = movementVector;
@@ -74,7 +78,7 @@ public class PlayerMovement : MonoBehaviourPun
         characterController.Move(movementVector); // metodo de character controller para moverlo
     }
 
-    void MovementMobile(float xMobile, float zMobile) 
+    void MovementMobile(float xMobile, float zMobile)
     {
         Vector3 movementVector = transform.forward * currentspeed * zMobile + transform.right * currentspeed * xMobile;
         auxMovementVector = movementVector;
@@ -121,6 +125,23 @@ public class PlayerMovement : MonoBehaviourPun
             Vector3 Move = transform.right * joystick.Horizontal + transform.forward * joystick.Vertical;
             characterController.Move(Move * velocity * Time.deltaTime);
 
+        }
+    }
+    public void OnTriggerEnter(Collider other)
+    {
+        if (!photonView.IsMine)
+            return;
+        {
+            if (other.CompareTag("Detector"))
+            {
+                winnerPotencial = true;
+            }
+            if (other.CompareTag("Win") && winnerPotencial)
+            {
+                GameManager.instance.LeaveRoom();
+                Destroy(this.gameObject);
+                PhotonNetwork.LoadLevel("Winning scene");
+            }
         }
     }
 }

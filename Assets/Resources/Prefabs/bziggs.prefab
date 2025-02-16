@@ -2989,6 +2989,7 @@ MonoBehaviour:
   xMobile: 0
   zMobile: 0
   joystick: {fileID: 0}
+  winnerPotencial: 0
 --- !u!114 &5544598332356480932
 MonoBehaviour:
   m_ObjectHideFlags: 0

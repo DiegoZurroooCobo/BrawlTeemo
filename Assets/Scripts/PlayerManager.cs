@@ -63,20 +63,20 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
             transform.position = new Vector3(0f, 5f, 0f); // posicion inicial al comenzar 
         }
     }
-    public override void OnDisable() // metodo OnDisable 
-    {
-        //siempre llama la base para quitar los callbacks 
-        base.OnDisable();
-        if ("Room for 2" == SceneManager.GetActiveScene().name)
-        {
-            GameManager.instance.Victory();
+    //public override void OnDisable() // metodo OnDisable 
+    //{
+    //    //siempre llama la base para quitar los callbacks 
+    //    base.OnDisable();
+    //    if ("Room for 2" == SceneManager.GetActiveScene().name)
+    //    {
+    //        GameManager.instance.Victory();
 
-        }
-        else
-        {
-            UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
-        }
-    }
+    //    }
+    //    else
+    //    {
+    //        UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
+    //    }
+    //}
 
 
 
