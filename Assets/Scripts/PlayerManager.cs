@@ -79,6 +79,7 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     }
 
 
+
     private void Update()
     {
         base.OnDisable();
@@ -90,6 +91,14 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
                 GameManager.instance.LoadScene("Losing scene");
 
             }
+        }
+        else if (health >= 100f && "Room for 1" == SceneManager.GetActiveScene().name)
+        {
+
+            GameManager.instance.Victory();
+            GameManager.instance.LoadScene("Winning scene");
+
+
         }
 
     }
