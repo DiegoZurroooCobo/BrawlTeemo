@@ -92,6 +92,11 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.LoadLevel("Winning scene");
     }
+    public void Defeat()
+    {
+        PhotonNetwork.LoadLevel("Losing scene");
+
+    }
 
     #endregion
 
@@ -109,11 +114,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         Application.Quit();
     }
 
-    public void Defeat()
-    {
-        PhotonNetwork.LoadLevel("Losing scene");
-
-    }
 
 
 }
