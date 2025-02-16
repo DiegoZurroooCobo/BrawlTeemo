@@ -25,29 +25,29 @@ public class Bomb : MonoBehaviour
         {
             currentTime = 0;
             ResetVelocity();
-            GetComponent<PoolObject>().readyToUse = true;
-            Explode();
-            gameObject.SetActive(false);
+            GetComponent<PoolObject>().readyToUse = true; //coge pool object y usa la variable ready to use  y lo setea a true
+            Explode(); // se llama al metodo de la explosion 
+            gameObject.SetActive(false); // se desactiva el objeto
         }
     }
 
-    private void Explode() 
+    private void Explode() // metodo para generar la explosion 
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
-        foreach (Collider collider in colliders)
+        Collider[] colliders = Physics.OverlapSphere(transform.position, radius); // collider como esfera
+        foreach (Collider collider in colliders) // por cada collider en todos los colliders
         {
-            PlayerManager PM = collider.GetComponent<PlayerManager>();
-            if (PM) 
+            PlayerManager PM = collider.GetComponent<PlayerManager>(); // coge el componente del playerManager
+            if (PM) // si el playerManager 
             { 
-                PM.health -= damage;
+                PM.health -= damage; // baja la vida del player manager con el daño de la bomba 
             }
         }
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmos() // metodo onDrawGizmos
     {
         Gizmos.color = Color.magenta;
-        Gizmos.DrawWireSphere(transform.position, radius);
+        Gizmos.DrawWireSphere(transform.position, radius); // dibuja el gizmo del area de la bomba 
     }
 
     public void ResetVelocity()

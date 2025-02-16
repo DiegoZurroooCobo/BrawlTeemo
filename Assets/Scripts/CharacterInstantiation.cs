@@ -34,11 +34,11 @@ public class CharacterInstantiation : MonoBehaviour
             Debug.LogFormat("Ignoring scene load for {0}", SceneManagerHelper.ActiveSceneName);
         }
 
-        IEnumerator WaitInstantiate()
+        IEnumerator WaitInstantiate() // corrutina para esperar a la instanciacion del personaje 
         {
             yield return new WaitForSeconds(0.4f);
             Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
-            PhotonNetwork.Instantiate(character.GetprefabPath(), new Vector3(0f, 5f, 0f), Quaternion.identity, 0);//Eto va debido a que lo cargamos con la escena ya cargada y emtpmnces ya va bien
+            PhotonNetwork.Instantiate(character.GetprefabPath(), new Vector3(0f, 5f, 0f), Quaternion.identity, 0);//Esto va debido a que lo cargamos con la escena ya cargada y emtpmnces ya va bien
         }
         //Instantiate(character.GetGO(), new Vector3(0, 0, 0), Quaternion.identity);
     }

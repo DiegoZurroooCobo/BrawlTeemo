@@ -44,15 +44,15 @@ public class ShootBomb : MonoBehaviourPunCallbacks
         GameObject obj = bombPool.GimmeInactiveGameObject(); // se iguala el obj al metodo GimmeInactiveGameObject de bullet pool 
         if (obj)
         {
-            obj.SetActive(true);
+            obj.SetActive(true); // se activae el objeto 
 
-            obj.transform.position = new Vector3(transform.position.x, transform.position.y + 3.5f, transform.position.z + 3f);
-            obj.transform.rotation = transform.rotation;
+            obj.transform.position = new Vector3(transform.position.x, transform.position.y + 3.5f, transform.position.z + 3f); // se instancia en una posicion
+            obj.transform.rotation = transform.rotation; // se iguala la rotacion
 
             Bomb bomb = obj.GetComponent<Bomb>();
             bomb.ResetVelocity();
-            bomb.ApplyParabolicThrow(transform);
-            obj.GetComponent<PoolObject>().readyToUse = false;
+            bomb.ApplyParabolicThrow(transform); // se usa el metodo tiroParabolico para el disparo de la bomba 
+            obj.GetComponent<PoolObject>().readyToUse = false; // la variable readyToUse del pool object se setea a false 
         }
     }
 }

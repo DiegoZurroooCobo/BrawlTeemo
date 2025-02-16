@@ -61,7 +61,7 @@ public class PlayerMovement : MonoBehaviourPun
         Rotation(mouseX);
     }
 
-    void Movement(float x, float z)
+    void Movement(float x, float z) 
     {
         Vector3 movementVector = transform.forward * currentspeed * z + transform.right * currentspeed * x;
         auxMovementVector = movementVector;
@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviourPun
         characterController.Move(movementVector); // metodo de character controller para moverlo
     }
 
-    void MovementMobile(float xMobile, float zMobile)
+    void MovementMobile(float xMobile, float zMobile) 
     {
         Vector3 movementVector = transform.forward * currentspeed * zMobile + transform.right * currentspeed * xMobile;
         auxMovementVector = movementVector;

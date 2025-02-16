@@ -116,11 +116,11 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.GetComponent<Bullet>())
+        if (collision.gameObject.GetComponent<Bullet>()) // si colisioan con un objecto con el componente bala 
         {
 
-            Bullet bullet = collision.gameObject.GetComponent<Bullet>();
-            health -= bullet.GetDamage();
+            Bullet bullet = collision.gameObject.GetComponent<Bullet>(); // coge el componente de bala
+            health -= bullet.GetDamage(); // baja la vida en funcion del daño de la bala 
         }
 
     }

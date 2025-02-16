@@ -48,7 +48,7 @@ public class ShootBullet : MonoBehaviourPunCallbacks
             obj.GetComponent<Bullet>().SetDirection(transform.forward); // Settea la direccion del objeto usando el metodo SetDirection() hacia adelante  
             obj.SetActive(true); //quitar el boli del estuche, ya no esta disponible en la poool
 
-            obj.GetComponent<PoolObject>().readyToUse = false;
+            obj.GetComponent<PoolObject>().readyToUse = false; // setea el readyToUse del poolobject a false
         }
     }
 }
