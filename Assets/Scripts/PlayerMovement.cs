@@ -36,8 +36,8 @@ public class PlayerMovement : MonoBehaviourPun
         x = Input.GetAxis("Horizontal");
         z = Input.GetAxis("Vertical");
 
-        xMobile = VirtualJoystick.GetAxisRaw("Horizontal", 1);
-        zMobile = VirtualJoystick.GetAxisRaw("Vertical", 1);
+        xMobile = VirtualJoystick.GetAxis("Horizontal", 1);
+        zMobile = VirtualJoystick.GetAxis("Vertical", 1);
         
         float mouseX = Input.GetAxis("Mouse X");
         InterpolateSpeed();
@@ -68,7 +68,7 @@ public class PlayerMovement : MonoBehaviourPun
 
     void MovementMobile(float xMobile, float zMobile) 
     {
-        Vector3 movementVector = transform.forward * currentspeed * joystick.Vertical + transform.right * currentspeed * joystick.Horizontal;
+        Vector3 movementVector = transform.forward * currentspeed * zMobile + transform.right * currentspeed * xMobile;
         auxMovementVector = movementVector;
 
         yVelocity -= gravityScale;

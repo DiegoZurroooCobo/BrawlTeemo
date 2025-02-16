@@ -585,7 +585,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1c8fe9a428eb45843861c2378d16db6a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1275,6 +1275,18 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8715936403074603380, guid: 814b11cd266049f479c12e7f0c7de05a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.3075975
+      objectReference: {fileID: 0}
+    - target: {fileID: 8715936403074603380, guid: 814b11cd266049f479c12e7f0c7de05a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.44435
+      objectReference: {fileID: 0}
+    - target: {fileID: 8715936403074603380, guid: 814b11cd266049f479c12e7f0c7de05a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.6335483
+      objectReference: {fileID: 0}
+    - target: {fileID: 8715936403074603380, guid: 814b11cd266049f479c12e7f0c7de05a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1304,11 +1316,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8715936403074603380, guid: 814b11cd266049f479c12e7f0c7de05a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 66
+      value: 75.6
       objectReference: {fileID: 0}
     - target: {fileID: 8715936403074603380, guid: 814b11cd266049f479c12e7f0c7de05a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -15.5
+      value: -24.6
       objectReference: {fileID: 0}
     - target: {fileID: 8715936403074603380, guid: 814b11cd266049f479c12e7f0c7de05a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1320,6 +1332,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8715936403074603380, guid: 814b11cd266049f479c12e7f0c7de05a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8715936403074603380, guid: 814b11cd266049f479c12e7f0c7de05a, type: 3}
+      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
