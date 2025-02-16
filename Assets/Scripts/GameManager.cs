@@ -27,20 +27,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
     public void Start()
     {
-        {
-            //if (PlayerManager.localPlayerInstance == null)
-            //{
-            //    Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
-
-            //    PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
-            //}
-            //else
-
-            //{
-            //    Debug.LogFormat("Ignoring scene load for {0}", SceneManagerHelper.ActiveSceneName);
-            //} 
-        }
-        //ahora solo instanciamos si PlayerManager no tiene una referenccia a una instancia existente de localPlayer
+  
     }
 
     private void Update()
