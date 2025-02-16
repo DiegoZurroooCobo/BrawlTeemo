@@ -2981,12 +2981,14 @@ MonoBehaviour:
   acceleration: 0.8
   rotationSpeed: 100
   gravityScale: 1
+  velocity: 20
   yVelocity: 0
   currentspeed: 0
   x: 0
   z: 0
   xMobile: 0
   zMobile: 0
+  joystick: {fileID: 0}
 --- !u!114 &5544598332356480932
 MonoBehaviour:
   m_ObjectHideFlags: 0

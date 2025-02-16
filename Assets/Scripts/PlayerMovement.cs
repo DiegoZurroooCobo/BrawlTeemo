@@ -9,16 +9,25 @@ public class PlayerMovement : MonoBehaviourPun
     public float walkingSpeed, runningSpeed, acceleration, rotationSpeed, gravityScale;
 
     private Vector3 dir = Vector3.forward;
+    public float velocity = 20f;
     public float yVelocity = 0, currentspeed, x, z, xMobile, zMobile;
     private CharacterController characterController;
     private Vector3 auxMovementVector;
     private bool shiftPressed;
-    private VariableJoystick joystick;
+    public FixedJoystick joystick;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        joystick = FindObjectOfType<FixedJoystick>();
+        //joystick.gameObject.SetActive(false);
+    }
+
+
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-        gravityScale = Mathf.Abs(gravityScale); 
+        gravityScale = Mathf.Abs(gravityScale);
     }
 
     // Update is called once per frame
@@ -38,7 +47,7 @@ public class PlayerMovement : MonoBehaviourPun
 
         xMobile = VirtualJoystick.GetAxis("Horizontal", 1);
         zMobile = VirtualJoystick.GetAxis("Vertical", 1);
-        
+
         float mouseX = Input.GetAxis("Mouse X");
         InterpolateSpeed();
 
@@ -65,7 +74,7 @@ public class PlayerMovement : MonoBehaviourPun
         characterController.Move(movementVector); // metodo de character controller para moverlo
     }
 
-    void MovementMobile(float xMobile, float zMobile) 
+    void MovementMobile(float xMobile, float zMobile)
     {
         Vector3 movementVector = transform.forward * currentspeed * zMobile + transform.right * currentspeed * xMobile;
         auxMovementVector = movementVector;
@@ -103,5 +112,15 @@ public class PlayerMovement : MonoBehaviourPun
     {
         Vector3 rotation = new Vector3(0, mouseX, 0) * rotationSpeed * Time.deltaTime;
         transform.Rotate(rotation); // el transform rote a la rotacion a la que estamos moviendo
+    }
+    private void FixedUpdate()
+    {
+        if (photonView.IsMine)
+        {
+            joystick.gameObject.SetActive(true);
+            Vector3 Move = transform.right * joystick.Horizontal + transform.forward * joystick.Vertical;
+            characterController.Move(Move * velocity * Time.deltaTime);
+
+        }
     }
 }

@@ -92,14 +92,14 @@ public class PlayerManager : MonoBehaviourPunCallbacks, IPunObservable
 
             }
         }
-        else if (health >= 100f && "Room for 1" == SceneManager.GetActiveScene().name)
-        {
+        //else if (health >= 100f && "Room for 1" == SceneManager.GetActiveScene().name)
+        //{
 
-            GameManager.instance.Victory();
-            GameManager.instance.LoadScene("Winning scene");
+        //    GameManager.instance.Victory();
+        //    GameManager.instance.LoadScene("Winning scene");
 
 
-        }
+        //}
 
     }
 
